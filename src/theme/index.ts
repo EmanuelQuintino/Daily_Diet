@@ -18,8 +18,8 @@ export default {
     GRAY_700: '#1B1D1E',
   },
   FONT_FAMILY: {
-    REGULAR: 'Roboto_400Regular',
-    BOLD: 'Roboto_700Bold',
+    REGULAR: 'Nunito_400Regular',
+    BOLD: 'Nunito_700Bold',
   },
   FONT_SIZE: {
     XS: 12,
