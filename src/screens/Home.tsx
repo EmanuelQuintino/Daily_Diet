@@ -1,5 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
-import { Container, Text } from './styles';
+import { StatusBar } from "expo-status-bar";
+import { Container, Text } from "./styles";
 
 export function Home() {
   return (
@@ -8,4 +8,4 @@ export function Home() {
       <StatusBar style="auto" />
     </Container>
   );
-};
+}
