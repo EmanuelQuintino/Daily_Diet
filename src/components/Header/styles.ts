@@ -18,7 +18,7 @@ export const ImageContainer = styled.View`
   width: ${imageSize}px;
   height: ${imageSize}px;
   overflow: hidden;
-  border: 4px solid ${({ theme }) => theme.COLORS.GRAY_500};
+  border: 3px solid ${({ theme }) => theme.COLORS.GRAY_500};
   border-radius: ${imageSize}px;
 `;
 
