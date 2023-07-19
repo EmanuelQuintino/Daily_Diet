@@ -1,11 +1,11 @@
-import { StatusBar } from "expo-status-bar";
 import { Container, Text } from "./styles";
+import { Header } from "@components/Header";
 
 export function Home() {
   return (
     <Container>
+      <Header/>
       <Text>Home</Text>
-      <StatusBar style="auto" />
     </Container>
   );
-}
+};

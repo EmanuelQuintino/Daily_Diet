@@ -1,11 +1,11 @@
 import { ThemeProvider } from "styled-components";
 import theme from "./src/theme";
+import { StatusBar } from "react-native";
 import {
   useFonts,
   Nunito_400Regular,
   Nunito_700Bold,
 } from "@expo-google-fonts/nunito";
-import { StatusBar } from "react-native";
 
 import { Home } from "@screens/Home";
 import { Loading } from "@components/Loading";
