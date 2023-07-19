@@ -1,15 +1,22 @@
-import { Container, PercentageText, MealsText, ArrowButton, Button } from "./styles";
+import {
+  Container,
+  PercentageText,
+  MealsText,
+  ArrowIcon,
+  ButtonContainer,
+} from "./styles";
 
-type Props = {
+export type MealPercentageProps = {
   percentage: number;
+  goal?: number;
 };
 
-export function MealPercentage({ percentage }: Props) {
+export function MealPercentage({ percentage, goal = 70 }: MealPercentageProps) {
   return (
-    <Container>
-      <Button>
-        <ArrowButton />
-      </Button>
+    <Container percentage={percentage} goal={goal}>
+      <ButtonContainer>
+        <ArrowIcon percentage={percentage} goal={goal} />
+      </ButtonContainer>
       <PercentageText>{String(percentage).replace(".", ",")}%</PercentageText>
       <MealsText>das refeições dentro da dieta</MealsText>
     </Container>
