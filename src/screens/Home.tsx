@@ -1,12 +1,80 @@
-import { BoxButton, Container, Text } from "./styles";
+import { SectionList } from "react-native";
+import { useState, useEffect } from "react";
+
 import { Button } from "@components/Button";
 import { Header } from "@components/Header";
 import { MealPercentage } from "@components/MealPercentage";
 
+import {
+  BoxButton,
+  BoxSectionList,
+  Container,
+  LabelButton,
+  Text,
+  TitleSectionList,
+} from "./styles";
+
+type MealsDataProps = {
+  day: string;
+  data: {
+    hour: string;
+    meal: string;
+    isInDiet: boolean;
+  }[];
+}[];
+
 export function Home() {
+  const [mealsData, setMealsData] = useState<MealsDataProps>([]);
   function handleNavigateMealsDetails() {
     console.log("Meals");
   }
+
+  const data = [
+    {
+      day: "23.07.23",
+      data: [
+        {
+          hour: "20:00",
+          meal: "Pizza",
+          isInDiet: false,
+        },
+        {
+          hour: "20:00",
+          meal: "Burger",
+          isInDiet: true,
+        },
+        {
+          hour: "20:00",
+          meal: "Risotto",
+          isInDiet: true,
+        },
+      ],
+    },
+    {
+      day: "24.07.23",
+      data: [
+        {
+          hour: "20:00",
+          meal: "Pizza",
+          isInDiet: true,
+        },
+        {
+          hour: "20:00",
+          meal: "Burger",
+          isInDiet: false,
+        },
+        {
+          hour: "20:00",
+          meal: "Risotto",
+          isInDiet: true,
+        },
+      ],
+    },
+  ];
+
+  useEffect(() => {
+    setMealsData(data);
+  }, []);
 
   return (
     <Container>
@@ -15,13 +83,24 @@ export function Home() {
       <MealPercentage percentage={90.86} />
 
       <BoxButton>
-        <Text>Refeições</Text>
+        <LabelButton>Refeições</LabelButton>
         <Button
           icon="add"
           name="Nova refeição"
           onPress={handleNavigateMealsDetails}
         />
       </BoxButton>
+
+      <BoxSectionList>
+        <SectionList
+          sections={mealsData}
+          keyExtractor={(item, index) => item.hour + index}
+          renderSectionHeader={({ section: { day } }) => (
+            <TitleSectionList>{day}</TitleSectionList>
+          )}
+          renderItem={({ item }) => <Text>{item.meal}</Text>}
+        />
+      </BoxSectionList>
     </Container>
   );
 }

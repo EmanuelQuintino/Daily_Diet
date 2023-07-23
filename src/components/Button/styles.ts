@@ -13,6 +13,7 @@ export const Container = styled(TouchableOpacity)`
   justify-content: center;
   gap: 8px;
   background: ${({ theme }) => theme.COLORS.GRAY_600};
+  margin-bottom: 56px;
 `;
 
 export const Icon = styled(MaterialIcons)`
@@ -22,6 +23,6 @@ export const Icon = styled(MaterialIcons)`
 
 export const Text = styled.Text`
   color: ${({ theme }) => theme.COLORS.WHITE};
-  font-size: ${({ theme }) => theme.FONT_SIZE.SM};
+  font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
   font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
 `;
