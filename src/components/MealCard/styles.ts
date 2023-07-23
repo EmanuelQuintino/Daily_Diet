@@ -8,13 +8,13 @@ export const Container = styled.View`
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
-  min-height: 56px;
-  max-height: 56px;
+  min-height: 52px;
+  max-height: 52px;
   width: 100%;
   border-radius: 8px;
-  margin-top: 32px;
+  margin-top: 12px;
   padding: 8px;
-  border: 1px solid ${({ theme }) => theme.COLORS.GRAY_400};
+  border: 1px solid ${({ theme }) => theme.COLORS.GRAY_300};
   padding: 8px 16px 8px 12px;
 `;
 

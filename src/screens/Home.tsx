@@ -74,7 +74,7 @@ export function Home() {
   ];
 
   useEffect(() => {
-    // setMealsData(data);
+    setMealsData(data);
   }, []);
 
   return (
@@ -91,17 +91,6 @@ export function Home() {
           onPress={handleNavigateMealsDetails}
         />
       </BoxButton>
-
-      <MealCard
-        hour={"20:20"}
-        name={"item meal wdagda gdaga g o iadg ifsgngsfog"}
-        isInDiet={true}
-      />
-      <MealCard
-        hour={"20:40"}
-        name={"da gdaga goiad da gdaga g oiad"}
-        isInDiet={false}
-      />
 
       <BoxSectionList>
         <SectionList

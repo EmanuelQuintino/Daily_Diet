@@ -12,7 +12,7 @@ export const LabelButton = styled.Text`
 `;
 
 export const BoxButton = styled.View`
-  margin-top: 32px;
+  margin-top: 36px;
   width: 100%;
   gap: 8px;
 `;
