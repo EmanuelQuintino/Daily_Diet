@@ -13,7 +13,6 @@ export const Logo = styled.Image`
 `;
 
 const imageSize = 52;
-
 export const ImageContainer = styled.View`
   width: ${imageSize}px;
   height: ${imageSize}px;

@@ -4,13 +4,13 @@ import { useState, useEffect } from "react";
 import { Button } from "@components/Button";
 import { Header } from "@components/Header";
 import { MealPercentage } from "@components/MealPercentage";
+import { MealCard } from "@components/MealCard";
 
 import {
   BoxButton,
   BoxSectionList,
   Container,
   LabelButton,
-  Text,
   TextEmptyList,
   TitleSectionList,
 } from "./styles";
@@ -92,6 +92,17 @@ export function Home() {
         />
       </BoxButton>
 
+      <MealCard
+        hour={"20:20"}
+        name={"item meal wdagda gdaga g o iadg ifsgngsfog"}
+        isInDiet={true}
+      />
+      <MealCard
+        hour={"20:40"}
+        name={"da gdaga goiad da gdaga g oiad"}
+        isInDiet={false}
+      />
+
       <BoxSectionList>
         <SectionList
           sections={mealsData}
@@ -99,7 +110,13 @@ export function Home() {
           renderSectionHeader={({ section: { day } }) => (
             <TitleSectionList>{day}</TitleSectionList>
           )}
-          renderItem={({ item }) => <Text>{item.meal}</Text>}
+          renderItem={({ item }) => (
+            <MealCard
+              hour={item.hour}
+              name={item.meal}
+              isInDiet={item.isInDiet}
+            />
+          )}
           ListEmptyComponent={
             <TextEmptyList>Adicionar nova refeição</TextEmptyList>
           }
