@@ -27,6 +27,12 @@ export const TitleSectionList = styled.Text`
   font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
 `;
 
+export const TextEmptyList = styled.Text`
+  font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
+  color: ${({ theme }) => theme.COLORS.GRAY_400};
+  margin: 50% auto;
+`;
+
 export const Text = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
 `;

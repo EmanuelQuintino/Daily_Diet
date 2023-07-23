@@ -17,8 +17,8 @@ export const Container = styled.View<MealPercentageProps>`
 
 export const ButtonContainer = styled.TouchableOpacity`
   position: absolute;
-  top: 8;
-  right: 8;
+  top: 8px;
+  right: 8px;
 `;
 
 export const ArrowIcon = styled(ArrowUpRight).attrs<MealPercentageProps>(

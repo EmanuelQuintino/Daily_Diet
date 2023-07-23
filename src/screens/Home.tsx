@@ -11,6 +11,7 @@ import {
   Container,
   LabelButton,
   Text,
+  TextEmptyList,
   TitleSectionList,
 } from "./styles";
 
@@ -73,7 +74,7 @@ export function Home() {
   ];
 
   useEffect(() => {
-    setMealsData(data);
+    // setMealsData(data);
   }, []);
 
   return (
@@ -99,6 +100,9 @@ export function Home() {
             <TitleSectionList>{day}</TitleSectionList>
           )}
           renderItem={({ item }) => <Text>{item.meal}</Text>}
+          ListEmptyComponent={
+            <TextEmptyList>Adicionar nova refeição</TextEmptyList>
+          }
         />
       </BoxSectionList>
     </Container>
