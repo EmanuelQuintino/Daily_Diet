@@ -19,6 +19,7 @@ export const BoxButton = styled.View`
 
 export const BoxSectionList = styled.View`
   width: 100%;
+  flex: 1;
 `;
 
 export const TitleSectionList = styled.Text`

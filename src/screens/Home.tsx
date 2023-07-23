@@ -26,8 +26,12 @@ type MealsDataProps = {
 
 export function Home() {
   const [mealsData, setMealsData] = useState<MealsDataProps>([]);
-  function handleNavigateMealsDetails() {
-    console.log("Meals");
+  function handleNavigateMealsStatistics() {
+    console.log("Meals Statistics");
+  }
+
+  function handleNavigateMealDetails() {
+    console.log("Meal Details");
   }
 
   const data = [
@@ -71,6 +75,26 @@ export function Home() {
         },
       ],
     },
+    {
+      day: "25.07.23",
+      data: [
+        {
+          hour: "20:00",
+          meal: "Pizza",
+          isInDiet: true,
+        },
+        {
+          hour: "20:00",
+          meal: "Burger",
+          isInDiet: false,
+        },
+        {
+          hour: "20:00",
+          meal: "Risotto",
+          isInDiet: true,
+        },
+      ],
+    },
   ];
 
   useEffect(() => {
@@ -88,7 +112,7 @@ export function Home() {
         <Button
           icon="add"
           name="Nova refeição"
-          onPress={handleNavigateMealsDetails}
+          onPress={handleNavigateMealsStatistics}
         />
       </BoxButton>
 
@@ -104,6 +128,7 @@ export function Home() {
               hour={item.hour}
               name={item.meal}
               isInDiet={item.isInDiet}
+              onPress={handleNavigateMealDetails}
             />
           )}
           ListEmptyComponent={
