@@ -2,7 +2,11 @@ import styled from "styled-components/native";
 import { TouchableOpacity } from "react-native";
 import { MaterialIcons } from "@expo/vector-icons";
 
-export const Container = styled(TouchableOpacity)`
+type Props = {
+  type: "PRIMARY" | "SECONDARY";
+};
+
+export const Container = styled(TouchableOpacity)<Props>`
   flex: 1;
   min-height: 56px;
   max-height: 56px;
@@ -12,17 +16,22 @@ export const Container = styled(TouchableOpacity)`
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background: ${({ theme }) => theme.COLORS.GRAY_600};
+  background: ${({ theme, type }) =>
+    type === "SECONDARY" ? theme.COLORS.WHITE : theme.COLORS.GRAY_600};
+  border: 1px solid
+    ${({ theme, type }) => (type === "SECONDARY" ? theme.COLORS.GRAY_600 : "")};
   margin-bottom: 56px;
 `;
 
-export const Icon = styled(MaterialIcons)`
-  color: ${({ theme }) => theme.COLORS.WHITE};
+export const Icon = styled(MaterialIcons)<Props>`
+  color: ${({ theme, type }) =>
+    type === "SECONDARY" ? theme.COLORS.GRAY_600 : theme.COLORS.WHITE};
   font-size: 18px;
 `;
 
-export const Text = styled.Text`
-  color: ${({ theme }) => theme.COLORS.WHITE};
+export const Text = styled.Text<Props>`
+  color: ${({ theme, type }) =>
+    type === "SECONDARY" ? theme.COLORS.GRAY_600 : theme.COLORS.WHITE};
   font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
   font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
 `;
