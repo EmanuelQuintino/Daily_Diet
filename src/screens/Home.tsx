@@ -120,6 +120,7 @@ export function Home() {
         <SectionList
           sections={mealsData}
           keyExtractor={(item, index) => item.hour + index}
+          showsVerticalScrollIndicator={false}
           renderSectionHeader={({ section: { day } }) => (
             <TitleSectionList>{day}</TitleSectionList>
           )}
