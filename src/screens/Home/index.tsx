@@ -26,8 +26,12 @@ type MealsDataProps = {
 
 export function Home() {
   const [mealsData, setMealsData] = useState<MealsDataProps>([]);
-  function handleNavigateMealsStatistics() {
+  function handleNavigateStatistics() {
     console.log("Meals Statistics");
+  }
+
+  function handleNavigateNewMeal() {
+    console.log("New Meal");
   }
 
   function handleNavigateMealDetails() {
@@ -105,14 +109,14 @@ export function Home() {
     <Container>
       <Header />
 
-      <MealPercentage percentage={90.86} />
+      <MealPercentage percentage={90.86} onPress={handleNavigateStatistics} />
 
       <BoxButton>
         <LabelButton>Refeições</LabelButton>
         <Button
           icon="add"
           name="Nova refeição"
-          onPress={handleNavigateMealsStatistics}
+          onPress={handleNavigateNewMeal}
         />
       </BoxButton>
 
