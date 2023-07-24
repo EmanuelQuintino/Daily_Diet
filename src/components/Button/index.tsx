@@ -17,7 +17,7 @@ export function Button({
   ...rest
 }: Props) {
   return (
-    <Container {...rest} onPress={onPress} type={type}>
+    <Container onPress={onPress} type={type} {...rest}>
       {icon && <Icon name={icon} type={type} />}
       <Text type={type}>{name}</Text>
     </Container>
