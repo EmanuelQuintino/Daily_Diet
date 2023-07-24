@@ -1,6 +1,13 @@
 import styled from "styled-components/native";
 import { ArrowUpRight } from "phosphor-react-native";
+import { ArrowLeft } from "phosphor-react-native";
 import { MealPercentageProps } from "./index";
+import { TouchableOpacity } from "react-native";
+import { TouchableOpacityProps } from "react-native";
+
+export type BackButtonProps = TouchableOpacityProps & {
+  backButton?: boolean;
+};
 
 export const Container = styled.View<MealPercentageProps>`
   align-items: center;
@@ -15,13 +22,20 @@ export const Container = styled.View<MealPercentageProps>`
   position: relative;
 `;
 
-export const ButtonContainer = styled.TouchableOpacity`
+export const ButtonContainer = styled(TouchableOpacity)<BackButtonProps>`
   position: absolute;
   top: 8px;
-  right: 8px;
+  ${({ backButton }) => (backButton ? "left: 8px;" : "right: 8px;")}
 `;
 
 export const ArrowIcon = styled(ArrowUpRight).attrs<MealPercentageProps>(
+  ({ theme, percentage, goal = 70 }) => ({
+    size: 24,
+    color: percentage > goal ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK,
+  })
+)<MealPercentageProps>``;
+
+export const ArrowIconBackButton = styled(ArrowLeft).attrs<MealPercentageProps>(
   ({ theme, percentage, goal = 70 }) => ({
     size: 24,
     color: percentage > goal ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK,
