@@ -7,28 +7,26 @@ type Props = {
 };
 
 export const Container = styled.View<Props>`
-  flex: 1;
   width: 100%;
+  padding: 20px;
   border-radius: 8px;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 40px;
-  /* margin-bottom: 56px; */
   background: ${({ theme, type }) =>
     type === "PRIMARY"
-      ? theme.COLORS.GREEN_MID
+      ? theme.COLORS.GREEN_LIGHT
       : type === "SECONDARY"
-      ? theme.COLORS.RED_MID
+      ? theme.COLORS.RED_LIGHT
       : type === "NEUTRAL"
-      ? theme.COLORS.GRAY_500
+      ? theme.COLORS.GRAY_100
       : ""};
 `;
 
 export const Data = styled.Text`
   color: ${({ theme }) => theme.COLORS.GRAY_600};
-  font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
+  font-size: ${({ theme }) => theme.FONT_SIZE.VL}px;
   font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
 `;
 
