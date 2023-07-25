@@ -1,4 +1,4 @@
-import { Container } from "./styles";
+import { Container, Title } from "./styles";
 import { MealPercentage } from "@components/MealPercentage";
 import { StatisticCard } from "@components/StatisticCard";
 
@@ -13,6 +13,8 @@ export function Statistics() {
         backButton
         onPress={hangleBackNavigate}
       />
+
+      <Title>Estatísticas gerais</Title>
 
       <StatisticCard
         data="22"

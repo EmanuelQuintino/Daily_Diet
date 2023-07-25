@@ -16,15 +16,14 @@ export const Container = styled.View<Props>`
   gap: 8px;
   padding: 40px;
   /* margin-bottom: 56px; */
-
   background: ${({ theme, type }) =>
-    type === "PRIMARY" && theme.COLORS.GREEN_MID};
-
-  background: ${({ theme, type }) =>
-    type === "SECONDARY" && theme.COLORS.RED_MID};
-
-  background: ${({ theme, type }) =>
-    type === "NEUTRAL" && theme.COLORS.GRAY_500};
+    type === "PRIMARY"
+      ? theme.COLORS.GREEN_MID
+      : type === "SECONDARY"
+      ? theme.COLORS.RED_MID
+      : type === "NEUTRAL"
+      ? theme.COLORS.GRAY_500
+      : ""};
 `;
 
 export const Data = styled.Text`
