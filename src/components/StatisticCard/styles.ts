@@ -15,6 +15,7 @@ export const Container = styled.View<Props>`
   align-items: center;
   justify-content: center;
   gap: 8px;
+  flex: 1;
   background: ${({ theme, type }) =>
     type === "PRIMARY"
       ? theme.COLORS.GREEN_LIGHT
@@ -32,6 +33,7 @@ export const Data = styled.Text`
 `;
 
 export const Title = styled.Text`
+  text-align: center;
   color: ${({ theme }) => theme.COLORS.GRAY_600};
   font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
   font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};

@@ -1,4 +1,4 @@
-import { Container, Title } from "./styles";
+import { BoxNeutral, BoxPrimarySecondary, Container, Title } from "./styles";
 import { MealPercentage } from "@components/MealPercentage";
 import { StatisticCard } from "@components/StatisticCard";
 
@@ -16,25 +16,35 @@ export function Statistics() {
 
       <Title>Estatísticas gerais</Title>
 
-      <StatisticCard
-        data="22"
-        title="melhor sequência de pratos dentro da dieta"
-        type="NEUTRAL"
-      />
+      <BoxNeutral>
+        <StatisticCard
+          data="22"
+          title="melhor sequência de pratos dentro da dieta"
+          type="NEUTRAL"
+        />
+      </BoxNeutral>
 
-      <StatisticCard data="109" title="refeições registradas" type="NEUTRAL" />
+      <BoxNeutral>
+        <StatisticCard
+          data="109"
+          title="refeições registradas"
+          type="NEUTRAL"
+        />
+      </BoxNeutral>
 
-      <StatisticCard
-        data="99"
-        title="refeições dentro da dieta"
-        type="PRIMARY"
-      />
+      <BoxPrimarySecondary>
+        <StatisticCard
+          data="99"
+          title="refeições dentro da dieta"
+          type="PRIMARY"
+        />
 
-      <StatisticCard
-        data="10"
-        title="refeições fora da dieta"
-        type="SECONDARY"
-      />
+        <StatisticCard
+          data="10"
+          title="refeições fora da dieta"
+          type="SECONDARY"
+        />
+      </BoxPrimarySecondary>
     </Container>
   );
 }
