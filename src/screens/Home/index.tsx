@@ -1,5 +1,6 @@
 import { SectionList } from "react-native";
 import { useState, useEffect } from "react";
+import { useNavigation } from "@react-navigation/native";
 
 import { Button } from "@components/Button";
 import { Header } from "@components/Header";
@@ -26,8 +27,11 @@ type MealsDataProps = {
 
 export function Home() {
   const [mealsData, setMealsData] = useState<MealsDataProps>([]);
+
+  const navigation = useNavigation();
+
   function handleNavigateStatistics() {
-    console.log("Meals Statistics");
+    navigation.navigate("statistics");
   }
 
   function handleNavigateNewMeal() {

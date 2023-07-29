@@ -9,7 +9,7 @@ export function AppRoutes() {
   return (
     <Navigator initialRouteName="home" screenOptions={{ headerShown: false }}>
       <Screen name="home" component={Home} />
-      <Screen name="statistcs" component={Statistics} />
+      <Screen name="statistics" component={Statistics} />
     </Navigator>
   );
 }

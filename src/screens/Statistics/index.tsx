@@ -1,10 +1,15 @@
-import { BoxNeutral, BoxPrimarySecondary, Container, Title } from "./styles";
+import { useNavigation } from "@react-navigation/native";
+
 import { MealPercentage } from "@components/MealPercentage";
 import { StatisticCard } from "@components/StatisticCard";
 
+import { BoxNeutral, BoxPrimarySecondary, Container, Title } from "./styles";
+
 export function Statistics() {
+  const navigation = useNavigation();
+
   function hangleBackNavigate() {
-    console.log("Back Navigate");
+    navigation.navigate("home");
   }
   return (
     <Container>
