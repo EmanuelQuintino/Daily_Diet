@@ -35,7 +35,7 @@ export function Home() {
   }
 
   function handleNavigateNewMeal() {
-    console.log("New Meal");
+    navigation.navigate("newmeal");
   }
 
   function handleNavigateMealDetails() {
