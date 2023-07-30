@@ -17,7 +17,8 @@ export const Container = styled.View<MealPercentageProps>`
   height: 102px;
   width: 100%;
   border-radius: 8px;
-  margin-top: 32px;
+  margin-top: 16px;
+  margin-bottom: 32px;
   padding: 8px;
   position: relative;
 `;
@@ -25,7 +26,7 @@ export const Container = styled.View<MealPercentageProps>`
 export const ButtonContainer = styled(TouchableOpacity)<BackButtonProps>`
   position: absolute;
   top: 8px;
-  ${({ backButton }) => (backButton ? "left: 8px;" : "right: 8px;")}
+  ${({ backButton }) => (backButton ? "left: 24px;" : "right: 8px;")}
 `;
 
 export const ArrowIcon = styled(ArrowUpRight).attrs<MealPercentageProps>(
