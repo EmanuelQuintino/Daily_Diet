@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 
 import { Button } from "@components/Button";
-import { Header } from "@components/Header";
+import { HeaderHome } from "@components/HeaderHome";
 import { MealPercentage } from "@components/MealPercentage";
 import { MealCard } from "@components/MealCard";
 
@@ -111,7 +111,7 @@ export function Home() {
 
   return (
     <Container>
-      <Header />
+      <HeaderHome />
 
       <MealPercentage percentage={90.86} onPress={handleNavigateStatistics} />
 

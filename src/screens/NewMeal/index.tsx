@@ -1,6 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 
 import { BoxMain, Container, Label } from "./styles";
+import { HeaderScreen } from "@components/HeaderScreen";
 
 export function NewMeal() {
   const navigation = useNavigation();
@@ -11,10 +12,11 @@ export function NewMeal() {
 
   return (
     <Container>
-      <Label>New Meal</Label>
-      <Label>New Meal</Label>
-      <Label>New Meal</Label>
-      <Label>New Meal</Label>
+      <HeaderScreen
+        type="NEUTRAL"
+        title="Nova refeição"
+        onPress={hangleBackNavigate}
+      />
       <BoxMain>
         <Label>New Meal</Label>
       </BoxMain>
