@@ -8,14 +8,13 @@ export const Container = styled(SafeAreaView)`
   padding: 24px;
 `;
 
-export const LabelButton = styled.Text`
-  font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
-`;
-
 export const BoxButton = styled.View`
-  margin-top: 8px;
   width: 100%;
   gap: 8px;
+`;
+
+export const LabelButton = styled.Text`
+  font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
 `;
 
 export const BoxSectionList = styled.View`
