@@ -14,7 +14,7 @@ type BackButtonProps = TouchableOpacityProps;
 export const Container = styled.View<Props>`
   align-items: center;
   justify-content: center;
-  height: 120px;
+  height: 92px;
   width: 100%;
   position: relative;
   background: ${({ theme, type }) =>
@@ -29,7 +29,7 @@ export const Container = styled.View<Props>`
 
 export const ButtonContainer = styled(TouchableOpacity)<BackButtonProps>`
   position: absolute;
-  top: 40%;
+  top: 25%;
   left: 24px;
 `;
 
@@ -50,4 +50,5 @@ export const ArrowIconBackButton = styled(ArrowLeft).attrs<Props>(
 export const Title = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
   font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
+  margin-bottom: 24px;
 `;

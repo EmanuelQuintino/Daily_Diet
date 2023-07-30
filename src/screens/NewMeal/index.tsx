@@ -10,10 +10,12 @@ export function NewMeal() {
     navigation.navigate("home");
   }
 
+  const type = "NEUTRAL";
+
   return (
-    <Container>
+    <Container type={type}>
       <HeaderScreen
-        type="NEUTRAL"
+        type={type}
         title="Nova refeição"
         onPress={hangleBackNavigate}
       />
