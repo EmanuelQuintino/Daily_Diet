@@ -1,7 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
 
-import { BoxMain, Container, Label } from "./styles";
+import { BoxInput, BoxMain, Container } from "./styles";
 import { HeaderScreen } from "@components/HeaderScreen";
+import { Input } from "@components/Input";
 
 export function NewMeal() {
   const navigation = useNavigation();
@@ -20,7 +21,9 @@ export function NewMeal() {
         onPress={hangleBackNavigate}
       />
       <BoxMain>
-        <Label>New Meal</Label>
+        <BoxInput>
+          <Input label="Text" placeholder="Digite seu nome" />
+        </BoxInput>
       </BoxMain>
     </Container>
   );

@@ -29,8 +29,9 @@ export const BoxMain = styled.View`
   margin-top: -24px;
 `;
 
-export const Label = styled.Text`
-  font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
-  font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
-  margin-top: 8px;
+export const BoxInput = styled.View`
+  flex: 1;
+  min-height: 56px;
+  max-height: 56px;
+  width: 100%;
 `;
