@@ -50,5 +50,13 @@ export const BoxTextArea = styled.View`
   flex: 1;
   min-height: 120px;
   max-height: 120px;
+`;
+
+export const BoxIsInDiet = styled.View`
+  flex: 1;
+  flex-direction: row;
+  gap: 8px;
+  min-height: 56px;
+  max-height: 56px;
   width: 100%;
 `;

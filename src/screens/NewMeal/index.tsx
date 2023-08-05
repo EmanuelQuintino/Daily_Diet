@@ -1,9 +1,18 @@
 import { useNavigation } from "@react-navigation/native";
 
-import { BoxForm, BoxInput, BoxMain, BoxTextArea, Container } from "./styles";
+import {
+  BoxForm,
+  BoxInput,
+  BoxIsInDiet,
+  BoxMain,
+  BoxTextArea,
+  Container,
+} from "./styles";
+
 import { HeaderScreen } from "@components/HeaderScreen";
 import { Input } from "@components/Input";
 import { Button } from "@components/Button";
+import { ButtonIsInDiet } from "@components/ButtonIsInDiet";
 
 export function NewMeal() {
   const navigation = useNavigation();
@@ -39,6 +48,11 @@ export function NewMeal() {
             <Input label="Hora" placeholder="23:23" />
           </BoxInput>
         </BoxForm>
+
+        <BoxIsInDiet>
+          <ButtonIsInDiet name="Sim" type="PRIMARY" onPress={() => {}} />
+          <ButtonIsInDiet name="Não" type="SECONDARY" onPress={() => {}} />
+        </BoxIsInDiet>
 
         <Button name="Cadastrar refeição" onPress={() => {}} />
       </BoxMain>
