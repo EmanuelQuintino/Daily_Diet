@@ -21,13 +21,14 @@ export const Container = styled(SafeAreaView)<Props>`
 
 export const BoxMain = styled.View`
   flex: 1;
-  background: ${({ theme }) => theme.COLORS.WHITE};
+  height: 100%;
   align-items: center;
   justify-content: space-between;
   padding: 24px;
   border-top-right-radius: 24px;
   border-top-left-radius: 24px;
   margin-top: -24px;
+  background: ${({ theme }) => theme.COLORS.WHITE};
 `;
 
 export const BoxForm = styled.View`
@@ -52,11 +53,23 @@ export const BoxTextArea = styled.View`
   max-height: 120px;
 `;
 
-export const BoxIsInDiet = styled.View`
+export const BoxIsInDiet = styled.View``;
+
+export const Label = styled.Text`
+  font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
+  font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
+`;
+
+export const BoxYesNo = styled.View`
   flex: 1;
   flex-direction: row;
   gap: 8px;
   min-height: 56px;
   max-height: 56px;
+  width: 100%;
+  margin-top: 8px;
+`;
+
+export const BoxButton = styled.View`
   width: 100%;
 `;
