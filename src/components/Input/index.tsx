@@ -10,10 +10,10 @@ export function Input({ label, placeholder, ...rest }: Props) {
     <Container>
       {label && <Label>{label}</Label>}
       <InputText
-        {...rest}
         placeholder={placeholder}
         textAlignVertical="top"
         multiline
+        {...rest}
       />
     </Container>
   );

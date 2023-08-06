@@ -1,4 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
+import { useState } from "react";
 
 import {
   BoxButton,
@@ -18,10 +19,27 @@ import { Button } from "@components/Button";
 import { ButtonIsInDiet } from "@components/ButtonIsInDiet";
 
 export function NewMeal() {
+  const [mealName, setMealName] = useState("");
+  const [mealDescription, setMealDescription] = useState("");
+  const [mealDate, setMealDate] = useState("");
+  const [mealHour, setMealHour] = useState("");
+  const [isInDiet, setIsInDiet] = useState(Boolean);
   const navigation = useNavigation();
 
   function hangleBackNavigate() {
     navigation.navigate("home");
+  }
+
+  function hangleRegisterNewMeal() {
+    const mealData = {
+      name: mealName,
+      description: mealDescription,
+      date: mealDate,
+      hour: mealHour,
+      isInDiet,
+    };
+
+    console.log(mealData);
   }
 
   const type = "NEUTRAL";
@@ -36,32 +54,54 @@ export function NewMeal() {
       <BoxMain>
         <BoxForm>
           <BoxInput>
-            <Input label="Nome" placeholder="Digite o nome da refeição" />
+            <Input
+              label="Nome"
+              placeholder="Digite o nome da refeição"
+              value={mealName}
+              onChangeText={setMealName}
+            />
           </BoxInput>
 
           <BoxTextArea>
             <Input
               label="Descrição"
               placeholder="Faça uma breve descrição da refeição"
+              value={mealDescription}
+              onChangeText={setMealDescription}
             />
           </BoxTextArea>
 
           <BoxInput>
-            <Input label="Data" placeholder="21/07/2023" />
-            <Input label="Hora" placeholder="23:23" />
+            <Input
+              label="Data"
+              placeholder="21/07/2023"
+              value={mealDate}
+              onChangeText={setMealDate}
+            />
+            <Input
+              label="Hora"
+              placeholder="23:23"
+              value={mealHour}
+              onChangeText={setMealHour}
+            />
           </BoxInput>
 
           <BoxIsInDiet>
             <Label>Está dentro da dieta?</Label>
             <BoxYesNo>
-              <ButtonIsInDiet name="Sim" type="PRIMARY" onPress={() => {}} />
+              <ButtonIsInDiet
+                name="Sim"
+                type="PRIMARY"
+                onPress={() => {}}
+                checked
+              />
               <ButtonIsInDiet name="Não" type="SECONDARY" onPress={() => {}} />
             </BoxYesNo>
           </BoxIsInDiet>
         </BoxForm>
 
         <BoxButton>
-          <Button name="Cadastrar refeição" onPress={() => {}} />
+          <Button name="Cadastrar refeição" onPress={hangleRegisterNewMeal} />
         </BoxButton>
       </BoxMain>
     </Container>
