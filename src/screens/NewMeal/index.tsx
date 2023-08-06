@@ -24,10 +24,24 @@ export function NewMeal() {
   const [mealDate, setMealDate] = useState("");
   const [mealHour, setMealHour] = useState("");
   const [isInDiet, setIsInDiet] = useState(Boolean);
+  const [yesButton, setYesButton] = useState(false);
+  const [noButton, setNoButton] = useState(false);
   const navigation = useNavigation();
 
   function hangleBackNavigate() {
     navigation.navigate("home");
+  }
+
+  function handlePressYes() {
+    setIsInDiet(true);
+    setYesButton(true);
+    setNoButton(false);
+  }
+
+  function handlePressNo() {
+    setIsInDiet(false);
+    setYesButton(false);
+    setNoButton(true);
   }
 
   function hangleRegisterNewMeal() {
@@ -92,10 +106,15 @@ export function NewMeal() {
               <ButtonIsInDiet
                 name="Sim"
                 type="PRIMARY"
-                onPress={() => {}}
-                checked
+                onPress={handlePressYes}
+                checked={yesButton}
               />
-              <ButtonIsInDiet name="Não" type="SECONDARY" onPress={() => {}} />
+              <ButtonIsInDiet
+                name="Não"
+                type="SECONDARY"
+                onPress={handlePressNo}
+                checked={noButton}
+              />
             </BoxYesNo>
           </BoxIsInDiet>
         </BoxForm>
