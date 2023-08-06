@@ -17,6 +17,7 @@ import { HeaderScreen } from "@components/HeaderScreen";
 import { Input } from "@components/Input";
 import { Button } from "@components/Button";
 import { ButtonIsInDiet } from "@components/ButtonIsInDiet";
+import { newMeal } from "@storage/meals/newMeal";
 
 export function NewMeal() {
   const [mealName, setMealName] = useState("");
@@ -44,16 +45,27 @@ export function NewMeal() {
     setNoButton(true);
   }
 
-  function hangleRegisterNewMeal() {
+  async function hangleRegisterNewMeal() {
     const mealData = {
-      name: mealName,
-      description: mealDescription,
-      date: mealDate,
-      hour: mealHour,
-      isInDiet,
+      day: mealDate,
+      data: [
+        {
+          hour: mealHour,
+          meal: mealName,
+          description: mealDescription,
+          isInDiet,
+        },
+      ],
     };
 
     console.log(mealData);
+
+    try {
+      await newMeal(mealData);
+      hangleBackNavigate();
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   const type = "NEUTRAL";

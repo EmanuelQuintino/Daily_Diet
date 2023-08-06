@@ -1,6 +1,6 @@
 import { SectionList } from "react-native";
-import { useState, useEffect } from "react";
-import { useNavigation } from "@react-navigation/native";
+import { useState, useCallback } from "react";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
 
 import { Button } from "@components/Button";
 import { HeaderHome } from "@components/HeaderHome";
@@ -15,13 +15,15 @@ import {
   TextEmptyList,
   TitleSectionList,
 } from "./styles";
+import { getMeals } from "@storage/meals/getMeals";
 
-type MealsDataProps = {
+export type MealsDataProps = {
   day: string;
   data: {
-    hour: string;
     meal: string;
+    hour: string;
     isInDiet: boolean;
+    description: string;
   }[];
 }[];
 
@@ -105,9 +107,18 @@ export function Home() {
     },
   ];
 
-  useEffect(() => {
+  async function fetchMeals() {
+    const data = await getMeals();
     setMealsData(data);
-  }, []);
+  }
+
+  useFocusEffect(
+    useCallback(() => {
+      fetchMeals();
+    }, [])
+  );
+
+  console.log(JSON.stringify(mealsData));
 
   return (
     <Container>
