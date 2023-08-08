@@ -119,6 +119,7 @@ export function Home() {
   );
 
   console.log(JSON.stringify(mealsData));
+  // console.log(mealsData.sort((a, b) => a.day < b.day));
 
   return (
     <Container>

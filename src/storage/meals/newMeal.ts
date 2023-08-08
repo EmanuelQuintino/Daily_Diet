@@ -15,7 +15,16 @@ export type MealDataProps = {
 export async function newMeal(meal: MealDataProps) {
   try {
     const storageMeals = await getMeals();
-    const storage = JSON.stringify([...storageMeals, meal]);
+
+    const mealIndex = storageMeals.findIndex((item) => item.day == meal.day);
+
+    if (mealIndex !== -1) {
+      storageMeals[mealIndex].data.push(...meal.data);
+    } else {
+      storageMeals.push(meal);
+    }
+
+    const storage = JSON.stringify(storageMeals);
     await AsyncStorage.setItem(MEALS_DATA, storage);
   } catch (error) {
     throw error;
