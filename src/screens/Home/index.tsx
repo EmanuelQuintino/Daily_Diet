@@ -44,69 +44,6 @@ export function Home() {
     console.log("Meal Details");
   }
 
-  const data = [
-    {
-      day: "23.07.23",
-      data: [
-        {
-          hour: "20:00",
-          meal: "Pizza",
-          isInDiet: false,
-        },
-        {
-          hour: "20:00",
-          meal: "Burger",
-          isInDiet: true,
-        },
-        {
-          hour: "20:00",
-          meal: "Risotto",
-          isInDiet: true,
-        },
-      ],
-    },
-    {
-      day: "24.07.23",
-      data: [
-        {
-          hour: "20:00",
-          meal: "Pizza",
-          isInDiet: true,
-        },
-        {
-          hour: "20:00",
-          meal: "Burger",
-          isInDiet: false,
-        },
-        {
-          hour: "20:00",
-          meal: "Risotto",
-          isInDiet: true,
-        },
-      ],
-    },
-    {
-      day: "25.07.23",
-      data: [
-        {
-          hour: "20:00",
-          meal: "Pizza",
-          isInDiet: true,
-        },
-        {
-          hour: "20:00",
-          meal: "Burger",
-          isInDiet: false,
-        },
-        {
-          hour: "20:00",
-          meal: "Risotto",
-          isInDiet: true,
-        },
-      ],
-    },
-  ];
-
   async function fetchMeals() {
     const data = await getMeals();
     setMealsData(data);
@@ -116,22 +53,6 @@ export function Home() {
     useCallback(() => {
       fetchMeals();
     }, [])
-  );
-
-  console.log(JSON.stringify(mealsData));
-  console.log(
-    mealsData.sort((a, b) => {
-      const [aDay, aMonth, aYear] = a.day.split(".").map(Number);
-      const [bDay, bMonth, bYear] = b.day.split(".").map(Number);
-
-      if (aYear !== bYear) {
-        return bYear - aYear;
-      }
-      if (aMonth !== bMonth) {
-        return bMonth - aMonth;
-      }
-      return bDay - aDay;
-    })
   );
 
   return (
