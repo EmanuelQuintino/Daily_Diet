@@ -38,7 +38,7 @@ export function NewMeal() {
       .replace(/\D/g, "")
       .replace(/(\d{2})(\d{2})(\d)/, "$1.$2.$3");
 
-    if (mealDate.length < 10) {
+    if (mealDate.length < 8) {
       setMealDate(dateText);
     }
   }

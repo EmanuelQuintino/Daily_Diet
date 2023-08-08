@@ -24,6 +24,19 @@ export async function newMeal(meal: MealDataProps) {
       storageMeals.push(meal);
     }
 
+    storageMeals.sort((a, b) => {
+      const [aDay, aMonth, aYear] = a.day.split(".").map(Number);
+      const [bDay, bMonth, bYear] = b.day.split(".").map(Number);
+
+      if (aYear !== bYear) {
+        return bYear - aYear;
+      }
+      if (aMonth !== bMonth) {
+        return bMonth - aMonth;
+      }
+      return bDay - aDay;
+    });
+
     const storage = JSON.stringify(storageMeals);
     await AsyncStorage.setItem(MEALS_DATA, storage);
   } catch (error) {

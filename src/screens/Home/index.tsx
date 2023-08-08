@@ -119,7 +119,20 @@ export function Home() {
   );
 
   console.log(JSON.stringify(mealsData));
-  // console.log(mealsData.sort((a, b) => a.day < b.day));
+  console.log(
+    mealsData.sort((a, b) => {
+      const [aDay, aMonth, aYear] = a.day.split(".").map(Number);
+      const [bDay, bMonth, bYear] = b.day.split(".").map(Number);
+
+      if (aYear !== bYear) {
+        return bYear - aYear;
+      }
+      if (aMonth !== bMonth) {
+        return bMonth - aMonth;
+      }
+      return bDay - aDay;
+    })
+  );
 
   return (
     <Container>
