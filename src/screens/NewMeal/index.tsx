@@ -33,6 +33,24 @@ export function NewMeal() {
     navigation.navigate("home");
   }
 
+  function handleMealDate(hour: string) {
+    const dateText = hour
+      .replace(/\D/g, "")
+      .replace(/(\d{2})(\d{2})(\d)/, "$1.$2.$3");
+
+    if (mealDate.length < 10) {
+      setMealDate(dateText);
+    }
+  }
+
+  function handleMealHour(hour: string) {
+    const hourText = hour.replace(/\D/g, "").replace(/(\d{2})(\d)/, "$1:$2");
+
+    if (mealHour.length < 5) {
+      setMealHour(hourText);
+    }
+  }
+
   function handlePressYes() {
     setIsInDiet(true);
     setYesButton(true);
@@ -102,13 +120,13 @@ export function NewMeal() {
               label="Data"
               placeholder="21/07/2023"
               value={mealDate}
-              onChangeText={setMealDate}
+              onChangeText={handleMealDate}
             />
             <Input
               label="Hora"
               placeholder="23:23"
               value={mealHour}
-              onChangeText={setMealHour}
+              onChangeText={handleMealHour}
             />
           </BoxInput>
 
