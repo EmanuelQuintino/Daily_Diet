@@ -1,5 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
+import { Alert } from "react-native";
 
 import {
   BoxButton,
@@ -18,6 +19,7 @@ import { Input } from "@components/Input";
 import { Button } from "@components/Button";
 import { ButtonIsInDiet } from "@components/ButtonIsInDiet";
 import { newMeal } from "@storage/meals/newMeal";
+import { AppError } from "@utils/AppError";
 
 export function NewMeal() {
   const [mealName, setMealName] = useState("");
@@ -82,7 +84,15 @@ export function NewMeal() {
       await newMeal(mealData);
       hangleBackNavigate();
     } catch (error) {
-      console.error(error);
+      if (error instanceof AppError) {
+        Alert.alert("Nova refeição", error.message);
+      } else {
+        Alert.alert(
+          "Nova refeição",
+          "Não foi possível cadastrar nova refeição"
+        );
+        console.error(error);
+      }
     }
   }
 
