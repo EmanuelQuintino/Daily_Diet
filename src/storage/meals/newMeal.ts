@@ -1,6 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { MEALS_DATA } from "@storage/storageConfig";
 import { getMeals } from "./getMeals";
+import { AppError } from "@utils/AppError";
 
 export type MealDataProps = {
   day: string;
@@ -14,6 +15,24 @@ export type MealDataProps = {
 
 export async function newMeal(meal: MealDataProps) {
   try {
+    function validateDate(date: string) {
+      const [day, month, year] = date.split(".").map(Number);
+      const fullYear = 2000 + year;
+      const newDate = new Date(fullYear, month - 1, day);
+
+      return (
+        newDate.getFullYear() === fullYear &&
+        newDate.getMonth() === month - 1 &&
+        newDate.getDate() === day
+      );
+    }
+
+    const isValidDate = validateDate(meal.day);
+
+    if (!isValidDate) {
+      throw new AppError("Data inválida!");
+    }
+
     const storageMeals = await getMeals();
 
     const mealIndex = storageMeals.findIndex((item) => item.day == meal.day);

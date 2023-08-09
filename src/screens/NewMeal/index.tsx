@@ -118,7 +118,7 @@ export function NewMeal() {
           <BoxInput>
             <Input
               label="Data"
-              placeholder="21/07/2023"
+              placeholder="21.07.23"
               value={mealDate}
               onChangeText={handleMealDate}
             />
