@@ -82,10 +82,10 @@ export function NewMeal() {
 
     try {
       if (
-        mealDate === "" ||
-        mealHour === "" ||
-        mealName === "" ||
-        mealDescription === ""
+        mealDate.trim().length === 0 ||
+        mealHour.trim().length === 0 ||
+        mealName.trim().length === 0 ||
+        mealDescription.trim().length === 0
       ) {
         return Alert.alert(
           "Nova refeição",
