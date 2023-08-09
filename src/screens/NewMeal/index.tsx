@@ -81,6 +81,18 @@ export function NewMeal() {
     console.log(mealData);
 
     try {
+      if (
+        mealDate === "" ||
+        mealHour === "" ||
+        mealName === "" ||
+        mealDescription === ""
+      ) {
+        return Alert.alert(
+          "Nova refeição",
+          "Informe todos os campos por favor"
+        );
+      }
+
       await newMeal(mealData);
       hangleBackNavigate();
     } catch (error) {
