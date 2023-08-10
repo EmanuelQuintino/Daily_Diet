@@ -1,4 +1,7 @@
+import { Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import { useTheme } from "styled-components";
+
 import { Button } from "@components/Button";
 import imageFeedbackIn from "../../assets/imageFeedbackIn.png";
 import {
@@ -11,6 +14,7 @@ import {
 
 export function IsInDiet() {
   const navigation = useNavigation();
+  const theme = useTheme();
 
   function handleNavigateHome() {
     navigation.navigate("home");
@@ -19,7 +23,13 @@ export function IsInDiet() {
   return (
     <Container>
       <TitleFeedback>Continue assim!</TitleFeedback>
-      <TextFeedback>Você continua dentro da dieta. Muito bem!</TextFeedback>
+      <TextFeedback>
+        Você continua{" "}
+        <Text style={{ fontFamily: theme.FONT_FAMILY.BOLD }}>
+          dentro da dieta.
+        </Text>{" "}
+        Muito bem!
+      </TextFeedback>
       <BoxButton>
         <ImageFeedback source={imageFeedbackIn} />
         <Button name="Ir para página inicial" onPress={handleNavigateHome} />
