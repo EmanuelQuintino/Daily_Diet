@@ -42,6 +42,7 @@ export function Home() {
 
   function handleNavigateMealDetails() {
     console.log("Meal Details");
+    navigation.navigate("isInDietFeedback");
   }
 
   async function fetchMeals() {
