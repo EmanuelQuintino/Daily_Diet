@@ -94,7 +94,7 @@ export function NewMeal() {
       }
 
       await newMeal(mealData);
-      hangleBackNavigate();
+      navigation.navigate("feedback", { isInDiet });
     } catch (error) {
       if (error instanceof AppError) {
         Alert.alert("Nova refeição", error.message);

@@ -9,16 +9,23 @@ export const Container = styled(SafeAreaView)`
   padding: 24px;
 `;
 
-export const TitleFeedback = styled.Text`
+export const TitleFeedbackIn = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.XL}px;
   font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
   color: ${({ theme }) => theme.COLORS.GREEN_DARK};
+`;
+
+export const TitleFeedbackOut = styled.Text`
+  font-size: ${({ theme }) => theme.FONT_SIZE.XL}px;
+  font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
+  color: ${({ theme }) => theme.COLORS.RED_DARK};
 `;
 
 export const TextFeedback = styled.Text`
   font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
   font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
   margin-top: 8px;
+  text-align: center;
 `;
 
 export const BoxButton = styled.View`
