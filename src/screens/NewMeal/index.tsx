@@ -85,7 +85,8 @@ export function NewMeal() {
         mealDate.trim().length === 0 ||
         mealHour.trim().length === 0 ||
         mealName.trim().length === 0 ||
-        mealDescription.trim().length === 0
+        mealDescription.trim().length === 0 ||
+        (yesButton === false && noButton === false)
       ) {
         return Alert.alert(
           "Nova refeição",
