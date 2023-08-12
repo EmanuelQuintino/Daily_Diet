@@ -1,3 +1,5 @@
+import { MealDataProps } from "@screens/Home";
+
 export declare global {
   namespace ReactNavigation {
     interface RootParamList {
@@ -6,6 +8,9 @@ export declare global {
       newmeal: undefined;
       feedback: {
         isInDiet: boolean;
+      };
+      mealdetails: {
+        meal: MealDataPropsDataProps;
       };
     }
   }

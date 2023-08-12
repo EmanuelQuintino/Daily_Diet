@@ -17,6 +17,16 @@ import {
 } from "./styles";
 import { getMeals } from "@storage/meals/getMeals";
 
+export type MealDataProps = {
+  day: string;
+  data: {
+    meal: string;
+    hour: string;
+    isInDiet: boolean;
+    description: string;
+  };
+};
+
 export type MealsDataProps = {
   day: string;
   data: {
@@ -40,8 +50,8 @@ export function Home() {
     navigation.navigate("newmeal");
   }
 
-  function handleNavigateMealDetails() {
-    console.log("Meal Details");
+  function handleNavigateMealDetails(meal: MealDataProps) {
+    navigation.navigate("mealdetails", { meal });
   }
 
   async function fetchMeals() {
@@ -78,12 +88,14 @@ export function Home() {
           renderSectionHeader={({ section: { day } }) => (
             <TitleSectionList>{day}</TitleSectionList>
           )}
-          renderItem={({ item }) => (
+          renderItem={({ item, section }) => (
             <MealCard
               hour={item.hour}
               name={item.meal}
               isInDiet={item.isInDiet}
-              onPress={handleNavigateMealDetails}
+              onPress={() =>
+                handleNavigateMealDetails({ day: section.day, data: item })
+              }
             />
           )}
           ListEmptyComponent={
