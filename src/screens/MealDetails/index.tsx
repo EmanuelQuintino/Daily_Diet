@@ -1,6 +1,17 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
 
-import { BoxButton, BoxForm, BoxMain, Container } from "./styles";
+import {
+  BoxButton,
+  BoxDetails,
+  BoxMain,
+  BoxStatus,
+  Container,
+  Date,
+  Icon,
+  Name,
+  Paragraph,
+  TextStatus,
+} from "./styles";
 
 import { HeaderScreen } from "@components/HeaderScreen";
 import { Button } from "@components/Button";
@@ -35,11 +46,36 @@ export function MealDetails() {
     <Container type={type}>
       <HeaderScreen type={type} title="Refeição" onPress={hangleBackNavigate} />
       <BoxMain>
-        <BoxForm></BoxForm>
+        <BoxDetails>
+          <Name>{data.name}</Name>
+          <Paragraph>{data.description}</Paragraph>
+
+          <Date>Data e hora</Date>
+          <Paragraph>
+            {day} às {data.hour}
+          </Paragraph>
+
+          {data.isInDiet ? (
+            <BoxStatus>
+              <Icon type="PRIMARY" />
+              <TextStatus>dentro da dieta</TextStatus>
+            </BoxStatus>
+          ) : (
+            <BoxStatus>
+              <Icon type="SECONDARY" />
+              <TextStatus>fora da dieta</TextStatus>
+            </BoxStatus>
+          )}
+        </BoxDetails>
 
         <BoxButton>
           <Button icon="edit" name="Editar refeição" onPress={() => {}} />
-          <Button icon="edit" name="Excluir refeição" onPress={() => {}} />
+          <Button
+            icon="delete"
+            name="Excluir refeição"
+            type="SECONDARY"
+            onPress={() => {}}
+          />
         </BoxButton>
       </BoxMain>
     </Container>

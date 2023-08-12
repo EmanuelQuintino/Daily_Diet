@@ -9,7 +9,6 @@ type Props = {
 };
 
 export const Container = styled(TouchableOpacity)<Props>`
-  flex: 1;
   min-height: 56px;
   max-height: 56px;
   width: 100%;
@@ -22,7 +21,7 @@ export const Container = styled(TouchableOpacity)<Props>`
     type === "SECONDARY" ? theme.COLORS.WHITE : theme.COLORS.GRAY_600};
   border: 1px solid
     ${({ theme, type }) => (type === "SECONDARY" ? theme.COLORS.GRAY_600 : "")};
-  margin-bottom: 56px;
+  margin-bottom: 8px;
 `;
 
 export const Icon = styled(MaterialIcons)<Props>`

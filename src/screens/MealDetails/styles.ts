@@ -22,52 +22,61 @@ export const Container = styled(SafeAreaView)<Props>`
 export const BoxMain = styled.View`
   flex: 1;
   height: 100%;
-  align-items: center;
-  justify-content: space-between;
-  padding: 24px;
+  padding: 24px 24px 8px;
   border-top-right-radius: 24px;
   border-top-left-radius: 24px;
   margin-top: -24px;
+  justify-content: space-between;
   background: ${({ theme }) => theme.COLORS.WHITE};
 `;
 
-export const BoxForm = styled.View`
+export const BoxDetails = styled.View`
   flex: 1;
-  margin-top: 12px;
+  margin-top: 24px;
   flex-direction: column;
-  gap: 48px;
+  gap: 8px;
 `;
 
-export const BoxInput = styled.View`
-  flex: 1;
-  flex-direction: row;
-  gap: 24px;
-  min-height: 56px;
-  max-height: 56px;
-  width: 100%;
-`;
-
-export const BoxTextArea = styled.View`
-  flex: 1;
-  min-height: 120px;
-  max-height: 120px;
-`;
-
-export const BoxIsInDiet = styled.View``;
-
-export const Label = styled.Text`
-  font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
+export const Name = styled.Text`
+  font-size: ${({ theme }) => theme.FONT_SIZE.VL}px;
   font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
 `;
 
-export const BoxYesNo = styled.View`
-  flex: 1;
+export const Date = styled.Text`
+  font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
+  font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
+  margin-top: 16px;
+`;
+
+export const Paragraph = styled.Text`
+  font-size: ${({ theme }) => theme.FONT_SIZE.LG}px;
+  font-family: ${({ theme }) => theme.FONT_FAMILY.REGULAR};
+`;
+
+export const BoxStatus = styled.View`
+  padding: 8px;
+  width: 160px;
+  border-radius: 24px;
+  margin-top: 24px;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
   gap: 8px;
-  min-height: 56px;
-  max-height: 56px;
-  width: 100%;
-  margin-top: 8px;
+  background: ${({ theme }) => theme.COLORS.GRAY_200};
+`;
+
+const iconSize = 8;
+export const Icon = styled.View<Props>`
+  width: ${iconSize}px;
+  height: ${iconSize}px;
+  border-radius: ${iconSize}px;
+  background: ${({ theme, type }) =>
+    type === "SECONDARY" ? theme.COLORS.RED_DARK : theme.COLORS.GREEN_DARK};
+`;
+
+export const TextStatus = styled.Text`
+  font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
+  font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
 `;
 
 export const BoxButton = styled.View`

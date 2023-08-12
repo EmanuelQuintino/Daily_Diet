@@ -33,7 +33,7 @@ export const BoxMain = styled.View`
 
 export const BoxForm = styled.View`
   flex: 1;
-  margin-top: 12px;
+  margin-top: 24px;
   flex-direction: column;
   gap: 48px;
 `;
