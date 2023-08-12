@@ -38,9 +38,9 @@ export function NewMeal() {
   function handleMealDate(hour: string) {
     const dateText = hour
       .replace(/\D/g, "")
-      .replace(/(\d{2})(\d{2})(\d)/, "$1.$2.$3");
+      .replace(/(\d{2})(\d{2})(\d)/, "$1/$2/$3");
 
-    if (mealDate.length < 8) {
+    if (mealDate.length < 10) {
       setMealDate(dateText);
     }
   }
@@ -141,7 +141,7 @@ export function NewMeal() {
           <BoxInput>
             <Input
               label="Data"
-              placeholder="21.07.23"
+              placeholder="21/07/2023"
               value={mealDate}
               onChangeText={handleMealDate}
             />

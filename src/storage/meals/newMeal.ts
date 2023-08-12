@@ -16,12 +16,11 @@ export type MealDataProps = {
 export async function newMeal(meal: MealDataProps) {
   try {
     function validateDate(date: string) {
-      const [day, month, year] = date.split(".").map(Number);
-      const fullYear = 2000 + year;
-      const newDate = new Date(fullYear, month - 1, day);
+      const [day, month, year] = date.split("/").map(Number);
+      const newDate = new Date(year, month - 1, day);
 
       return (
-        newDate.getFullYear() === fullYear &&
+        newDate.getFullYear() === year &&
         newDate.getMonth() === month - 1 &&
         newDate.getDate() === day
       );

@@ -88,7 +88,10 @@ export function Home() {
           keyExtractor={(item, index) => item.hour + index}
           showsVerticalScrollIndicator={false}
           renderSectionHeader={({ section: { day } }) => (
-            <TitleSectionList>{day}</TitleSectionList>
+            <TitleSectionList>
+              {day.split("/")[0]}.{day.split("/")[1]}.
+              {String(day.split("/")[2]).slice(-2)}
+            </TitleSectionList>
           )}
           renderItem={({ item, section }) => (
             <MealCard
