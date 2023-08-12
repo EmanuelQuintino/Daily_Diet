@@ -20,7 +20,7 @@ import { getMeals } from "@storage/meals/getMeals";
 export type MealDataProps = {
   day: string;
   data: {
-    meal: string;
+    name: string;
     hour: string;
     isInDiet: boolean;
     description: string;
@@ -30,7 +30,7 @@ export type MealDataProps = {
 export type MealsDataProps = {
   day: string;
   data: {
-    meal: string;
+    name: string;
     hour: string;
     isInDiet: boolean;
     description: string;
@@ -65,6 +65,8 @@ export function Home() {
     }, [])
   );
 
+  console.log(JSON.stringify(mealsData));
+
   return (
     <Container>
       <HeaderHome />
@@ -91,7 +93,7 @@ export function Home() {
           renderItem={({ item, section }) => (
             <MealCard
               hour={item.hour}
-              name={item.meal}
+              name={item.name}
               isInDiet={item.isInDiet}
               onPress={() =>
                 handleNavigateMealDetails({ day: section.day, data: item })

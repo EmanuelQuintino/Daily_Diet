@@ -6,7 +6,7 @@ import { AppError } from "@utils/AppError";
 export type MealDataProps = {
   day: string;
   data: {
-    meal: string;
+    name: string;
     hour: string;
     isInDiet: boolean;
     description: string;

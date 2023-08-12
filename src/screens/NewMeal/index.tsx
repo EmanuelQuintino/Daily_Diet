@@ -71,7 +71,7 @@ export function NewMeal() {
       data: [
         {
           hour: mealHour,
-          meal: mealName,
+          name: mealName,
           description: mealDescription,
           isInDiet,
         },
