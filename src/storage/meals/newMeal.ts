@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { MEALS_DATA } from "@storage/storageConfig";
+import { MEALS_DATA_KEY } from "@storage/storageConfig";
 import { getMeals } from "./getMeals";
 import { AppError } from "@utils/AppError";
 
@@ -43,8 +43,8 @@ export async function newMeal(meal: MealDataProps) {
     }
 
     storageMeals.sort((a, b) => {
-      const [aDay, aMonth, aYear] = a.day.split(".").map(Number);
-      const [bDay, bMonth, bYear] = b.day.split(".").map(Number);
+      const [aDay, aMonth, aYear] = a.day.split("/").map(Number);
+      const [bDay, bMonth, bYear] = b.day.split("/").map(Number);
 
       if (aYear !== bYear) {
         return bYear - aYear;
@@ -68,7 +68,7 @@ export async function newMeal(meal: MealDataProps) {
     });
 
     const storage = JSON.stringify(storageMeals);
-    await AsyncStorage.setItem(MEALS_DATA, storage);
+    await AsyncStorage.setItem(MEALS_DATA_KEY, storage);
   } catch (error) {
     throw error;
   }

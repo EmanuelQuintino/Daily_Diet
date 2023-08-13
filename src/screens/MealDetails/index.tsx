@@ -15,6 +15,8 @@ import {
 
 import { HeaderScreen } from "@components/HeaderScreen";
 import { Button } from "@components/Button";
+import { Alert } from "react-native";
+import { deleteMeal } from "@storage/meals/deleteMeal";
 
 export type MealDataProps = {
   meal: {
@@ -36,15 +38,26 @@ export function MealDetails() {
     meal: { data, day },
   } = route.params as MealDataProps;
 
-  function hangleBackNavigate() {
+  function handleBackNavigate() {
     navigation.navigate("home");
+  }
+
+  async function handleDeleteMeal() {
+    try {
+      console.log("deleteMeal");
+      await deleteMeal(day, data.hour);
+      navigation.navigate("home");
+    } catch (error) {
+      console.error(error);
+      Alert.alert("Excluir refeição", "Não foi possível excluir refeição");
+    }
   }
 
   const type = data.isInDiet ? "PRIMARY" : "SECONDARY";
 
   return (
     <Container type={type}>
-      <HeaderScreen type={type} title="Refeição" onPress={hangleBackNavigate} />
+      <HeaderScreen type={type} title="Refeição" onPress={handleBackNavigate} />
       <BoxMain>
         <BoxDetails>
           <Name>{data.name}</Name>
@@ -74,7 +87,7 @@ export function MealDetails() {
             icon="delete"
             name="Excluir refeição"
             type="SECONDARY"
-            onPress={() => {}}
+            onPress={handleDeleteMeal}
           />
         </BoxButton>
       </BoxMain>
