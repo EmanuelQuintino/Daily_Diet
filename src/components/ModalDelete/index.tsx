@@ -3,6 +3,7 @@ import { View } from "react-native";
 import Modal from "react-native-modal";
 import { Button } from "@components/Button";
 import { ContainerModal, TitleModal, BoxButton } from "./styles";
+import { StatusBar } from "expo-status-bar";
 
 type Props = {
   isModalVisible: boolean;
@@ -16,7 +17,12 @@ export function ModalDelete({
   handleDeleteMeal,
 }: Props) {
   return (
-    <Modal isVisible={isModalVisible} animationIn={"fadeIn"}>
+    <Modal
+      isVisible={isModalVisible}
+      animationIn={"fadeIn"}
+      backdropTransitionOutTiming={1000}
+    >
+      <StatusBar translucent backgroundColor="rgba(0, 0, 0, 0.7)" />
       <ContainerModal>
         <TitleModal>
           Deseja realmente excluir o registro da refeição?
