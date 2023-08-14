@@ -51,17 +51,8 @@ export function MealDetails() {
 
   async function handleDeleteMeal() {
     try {
-      // Alert.alert("", "Deseja realmente excluir o registro da refeição?", [
-      //   { text: "Não", style: "cancel" },
-      //   {
-      //     text: "Sim",
-      //     style: "default",
-      //     onPress: async () => {
-      //       await deleteMeal(day, data.hour);
-      //       navigation.navigate("home");
-      //     },
-      //   },
-      // ]);
+      await deleteMeal(day, data.hour);
+      navigation.navigate("home");
       toggleModal();
     } catch (error) {
       console.error(error);
@@ -74,11 +65,12 @@ export function MealDetails() {
   return (
     <Container type={type}>
       <HeaderScreen type={type} title="Refeição" onPress={handleBackNavigate} />
+      <ModalDelete
+        isModalVisible={isModalVisible}
+        toggleModal={toggleModal}
+        handleDeleteMeal={handleDeleteMeal}
+      />
       <BoxMain>
-        <ModalDelete
-          isModalVisible={isModalVisible}
-          toggleModal={toggleModal}
-        />
         <BoxDetails>
           <Name>{data.name}</Name>
           <Paragraph>{data.description}</Paragraph>
@@ -107,7 +99,7 @@ export function MealDetails() {
             icon="delete"
             name="Excluir refeição"
             type="SECONDARY"
-            onPress={handleDeleteMeal}
+            onPress={toggleModal}
           />
         </BoxButton>
       </BoxMain>
