@@ -33,6 +33,6 @@ export const Icon = styled(MaterialIcons)<Props>`
 export const Text = styled.Text<Props>`
   color: ${({ theme, type }) =>
     type === "SECONDARY" ? theme.COLORS.GRAY_600 : theme.COLORS.WHITE};
-  font-size: ${({ theme }) => theme.FONT_SIZE.SM}px;
+  font-size: ${({ theme }) => theme.FONT_SIZE.MD}px;
   font-family: ${({ theme }) => theme.FONT_FAMILY.BOLD};
 `;

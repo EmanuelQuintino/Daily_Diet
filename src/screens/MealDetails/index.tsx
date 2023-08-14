@@ -18,6 +18,7 @@ import { Button } from "@components/Button";
 import { Alert } from "react-native";
 import { deleteMeal } from "@storage/meals/deleteMeal";
 import { ModalDelete } from "@components/ModalDelete";
+import { useState } from "react";
 
 export type MealDataProps = {
   meal: {
@@ -34,6 +35,11 @@ export type MealDataProps = {
 export function MealDetails() {
   const navigation = useNavigation();
   const route = useRoute();
+  const [isModalVisible, setModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
 
   const {
     meal: { data, day },
@@ -45,17 +51,18 @@ export function MealDetails() {
 
   async function handleDeleteMeal() {
     try {
-      Alert.alert("", "Deseja realmente excluir o registro da refeição?", [
-        { text: "Não", style: "cancel" },
-        {
-          text: "Sim",
-          style: "default",
-          onPress: async () => {
-            await deleteMeal(day, data.hour);
-            navigation.navigate("home");
-          },
-        },
-      ]);
+      // Alert.alert("", "Deseja realmente excluir o registro da refeição?", [
+      //   { text: "Não", style: "cancel" },
+      //   {
+      //     text: "Sim",
+      //     style: "default",
+      //     onPress: async () => {
+      //       await deleteMeal(day, data.hour);
+      //       navigation.navigate("home");
+      //     },
+      //   },
+      // ]);
+      toggleModal();
     } catch (error) {
       console.error(error);
       Alert.alert("Excluir refeição", "Não foi possível excluir refeição");
@@ -68,6 +75,10 @@ export function MealDetails() {
     <Container type={type}>
       <HeaderScreen type={type} title="Refeição" onPress={handleBackNavigate} />
       <BoxMain>
+        <ModalDelete
+          isModalVisible={isModalVisible}
+          toggleModal={toggleModal}
+        />
         <BoxDetails>
           <Name>{data.name}</Name>
           <Paragraph>{data.description}</Paragraph>
