@@ -26,8 +26,12 @@ export async function deleteMeal(day: string, hour: string) {
       })
       .filter((item) => item.data.length > 0);
 
-    const storage = JSON.stringify(deleteMeals);
-    await AsyncStorage.setItem(MEALS_DATA_KEY, storage);
+    if (deleteMeals.length > 0) {
+      const storage = JSON.stringify(deleteMeals);
+      await AsyncStorage.setItem(MEALS_DATA_KEY, storage);
+    } else {
+      await AsyncStorage.removeItem(MEALS_DATA_KEY);
+    }
   } catch (error) {
     throw error;
   }
