@@ -49,6 +49,10 @@ export function MealDetails() {
     navigation.navigate("home");
   }
 
+  function handleEditNavigate() {
+    navigation.navigate("editmeal", { meal: { day, data } });
+  }
+
   async function handleDeleteMeal() {
     try {
       await deleteMeal(day, data.hour);
@@ -94,7 +98,11 @@ export function MealDetails() {
         </BoxDetails>
 
         <BoxButton>
-          <Button icon="edit" name="Editar refeição" onPress={() => {}} />
+          <Button
+            icon="edit"
+            name="Editar refeição"
+            onPress={handleEditNavigate}
+          />
           <Button
             icon="delete"
             name="Excluir refeição"

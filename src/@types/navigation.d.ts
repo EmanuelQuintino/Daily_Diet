@@ -6,11 +6,14 @@ export declare global {
       home: undefined;
       statistics: undefined;
       newmeal: undefined;
+      editmeal: {
+        meal: MealDataProps;
+      };
       feedback: {
         isInDiet: boolean;
       };
       mealdetails: {
-        meal: MealDataPropsDataProps;
+        meal: MealDataProps;
       };
     }
   }
