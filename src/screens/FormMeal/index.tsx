@@ -38,9 +38,7 @@ export function FormMeal() {
     if (route.params) {
       setIsUpdate(true);
 
-      const {
-        meal: { data, day },
-      } = route.params as MealDataProps;
+      const { day, data } = route.params as MealDataProps;
 
       setMealName(data.name);
       setMealDescription(data.description);

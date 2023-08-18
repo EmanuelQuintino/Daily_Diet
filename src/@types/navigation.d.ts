@@ -1,12 +1,12 @@
+import { MealDataProps } from "@screens/MealDetails";
+
 export declare global {
   namespace ReactNavigation {
     interface RootParamList {
       home: undefined;
       statistics: undefined;
       newmeal: undefined;
-      editmeal: {
-        dayHour: string;
-      };
+      editmeal: MealDataProps;
       feedback: {
         isInDiet: boolean;
       };

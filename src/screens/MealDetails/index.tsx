@@ -49,7 +49,7 @@ export function MealDetails() {
   }
 
   function handleEditNavigate() {
-    navigation.navigate("editmeal", { dayHour });
+    navigation.navigate("editmeal", { day, data: meal!.data });
   }
 
   async function handleDeleteMeal() {
