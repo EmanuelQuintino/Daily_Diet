@@ -50,8 +50,8 @@ export function Home() {
     navigation.navigate("newmeal");
   }
 
-  function handleNavigateMealDetails(meal: MealDataProps) {
-    navigation.navigate("mealdetails", { meal });
+  function handleNavigateMealDetails(day: string, hour: string) {
+    navigation.navigate("mealdetails", { dayHour: `${day}-${hour}` });
   }
 
   async function fetchMeals() {
@@ -98,9 +98,7 @@ export function Home() {
               hour={item.hour}
               name={item.name}
               isInDiet={item.isInDiet}
-              onPress={() =>
-                handleNavigateMealDetails({ day: section.day, data: item })
-              }
+              onPress={() => handleNavigateMealDetails(section.day, item.hour)}
             />
           )}
           ListEmptyComponent={

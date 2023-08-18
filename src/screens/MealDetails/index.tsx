@@ -18,17 +18,16 @@ import { Button } from "@components/Button";
 import { Alert } from "react-native";
 import { deleteMeal } from "@storage/meals/deleteMeal";
 import { ModalDelete } from "@components/ModalDelete";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getMealByDayHours } from "@storage/meals/getMealByDayHour";
 
 export type MealDataProps = {
-  meal: {
-    day: string;
-    data: {
-      name: string;
-      hour: string;
-      isInDiet: boolean;
-      description: string;
-    };
+  day: string;
+  data: {
+    name: string;
+    hour: string;
+    isInDiet: boolean;
+    description: string;
   };
 };
 
@@ -36,26 +35,26 @@ export function MealDetails() {
   const navigation = useNavigation();
   const route = useRoute();
   const [isModalVisible, setModalVisible] = useState(false);
+  const [meal, setMeal] = useState<MealDataProps>();
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
 
-  const {
-    meal: { data, day },
-  } = route.params as MealDataProps;
+  const { dayHour } = route.params as { dayHour: string };
+  const [day, hour] = dayHour.split("-");
 
   function handleBackNavigate() {
     navigation.navigate("home");
   }
 
   function handleEditNavigate() {
-    navigation.navigate("editmeal", { meal: { day, data } });
+    navigation.navigate("editmeal", { dayHour });
   }
 
   async function handleDeleteMeal() {
     try {
-      await deleteMeal(day, data.hour);
+      await deleteMeal(day, hour);
       navigation.navigate("home");
       toggleModal();
     } catch (error) {
@@ -64,7 +63,21 @@ export function MealDetails() {
     }
   }
 
-  const type = data.isInDiet ? "PRIMARY" : "SECONDARY";
+  async function fetchMeal() {
+    try {
+      const mealData = await getMealByDayHours(day, hour);
+      setMeal(mealData);
+    } catch (error) {
+      console.error(error);
+      Alert.alert("Obter refeição", "Não foi possível obter refeição");
+    }
+  }
+
+  useEffect(() => {
+    fetchMeal();
+  }, []);
+
+  const type = meal?.data.isInDiet ? "PRIMARY" : "SECONDARY";
 
   return (
     <Container type={type}>
@@ -76,15 +89,15 @@ export function MealDetails() {
       />
       <BoxMain>
         <BoxDetails>
-          <Name>{data.name}</Name>
-          <Paragraph>{data.description}</Paragraph>
+          <Name>{meal?.data.name}</Name>
+          <Paragraph>{meal?.data.description}</Paragraph>
 
           <Date>Data e hora</Date>
           <Paragraph>
-            {day} às {data.hour}
+            {day} às {meal?.data.hour}
           </Paragraph>
 
-          {data.isInDiet ? (
+          {meal?.data.isInDiet ? (
             <BoxStatus>
               <Icon type="PRIMARY" />
               <TextStatus>dentro da dieta</TextStatus>

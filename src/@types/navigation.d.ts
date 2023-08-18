@@ -1,5 +1,3 @@
-import { MealDataProps } from "@screens/Home";
-
 export declare global {
   namespace ReactNavigation {
     interface RootParamList {
@@ -7,13 +5,13 @@ export declare global {
       statistics: undefined;
       newmeal: undefined;
       editmeal: {
-        meal: MealDataProps;
+        dayHour: string;
       };
       feedback: {
         isInDiet: boolean;
       };
       mealdetails: {
-        meal: MealDataProps;
+        dayHour: string;
       };
     }
   }
