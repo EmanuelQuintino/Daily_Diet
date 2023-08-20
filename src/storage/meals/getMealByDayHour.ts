@@ -8,20 +8,25 @@ export async function getMealByDayHours(day: string, hour: string) {
 
     const meals: MealsDataProps = storage ? JSON.parse(storage) : [];
 
-    const mealFilter = meals.find((item) => {
+    const mealFind = meals.find((item) => {
       if (item.day === day) {
         const remainingMeal = item.data.find((meal) => meal.hour === hour);
         return remainingMeal;
       }
     });
 
-    if (mealFilter) {
-      const { data, day } = mealFilter;
-      const formattedMealFilter = {
-        data: data[0],
+    console.log(mealFind);
+
+    const filterData = mealFind
+      ? mealFind.data.find((meal) => meal.hour === hour)
+      : [];
+
+    if (mealFind) {
+      const formattedMealFind = {
+        data: filterData,
         day,
       };
-      return formattedMealFilter;
+      return formattedMealFind;
     }
     return undefined;
   } catch (error) {

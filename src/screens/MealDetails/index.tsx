@@ -73,6 +73,8 @@ export function MealDetails() {
     }
   }
 
+  // console.log(meal);
+
   useEffect(() => {
     fetchMeal();
   }, []);
