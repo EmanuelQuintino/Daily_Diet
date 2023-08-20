@@ -9,19 +9,17 @@ export async function getMealByDayHours(day: string, hour: string) {
     const meals: MealsDataProps = storage ? JSON.parse(storage) : [];
 
     const mealFindByDay = meals.find((item) => item.day === day);
-
-    if (mealFindByDay) {
-      const mealFindByHour = mealFindByDay.data.find(
-        (meal) => meal.hour === hour
-      );
-
-      if (mealFindByHour) {
-        return {
-          day,
-          data: mealFindByHour,
-        };
+    const mealFindByHour = mealFindByDay
+      ? mealFindByDay.data.find((meal) => meal.hour === hour)
+      : [];
+    
+    if (mealFindByHour) {
+      return {
+        day,
+        data: mealFindByHour
       }
     }
+    
     return undefined;
   } catch (error) {
     throw error;
