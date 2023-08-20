@@ -111,7 +111,7 @@ export function FormMeal() {
     }
   }
 
-  async function handleEditMeal() {
+  async function handleUpdateMeal() {
     const mealData = {
       day: mealDate,
       data: [
@@ -133,7 +133,7 @@ export function FormMeal() {
         (yesButton === false && noButton === false)
       ) {
         return Alert.alert(
-          "Nova refeição",
+          "Atualizar refeição",
           "Informe todos os campos por favor"
         );
       }
@@ -240,7 +240,7 @@ export function FormMeal() {
 
         <BoxButton>
           {isUpdate ? (
-            <Button name="Salvar alterações" onPress={handleEditMeal} />
+            <Button name="Salvar alterações" onPress={handleUpdateMeal} />
           ) : (
             <Button name="Cadastrar refeição" onPress={hangleRegisterNewMeal} />
           )}
