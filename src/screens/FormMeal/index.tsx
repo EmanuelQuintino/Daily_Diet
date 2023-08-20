@@ -21,6 +21,7 @@ import { ButtonIsInDiet } from "@components/ButtonIsInDiet";
 import { newMeal } from "@storage/meals/newMeal";
 import { AppError } from "@utils/AppError";
 import { MealDataProps } from "@screens/MealDetails";
+import { updateMeal } from "@storage/meals/updateMeal";
 
 export function FormMeal() {
   const [mealName, setMealName] = useState("");
@@ -33,28 +34,6 @@ export function FormMeal() {
   const [isUpdate, setIsUpdate] = useState(false);
   const navigation = useNavigation();
   const route = useRoute();
-
-  useEffect(() => {
-    if (route.params) {
-      setIsUpdate(true);
-
-      const { day, data } = route.params as MealDataProps;
-
-      setMealName(data.name);
-      setMealDescription(data.description);
-      setMealDate(day);
-      setMealHour(data.hour);
-      setIsInDiet(data.isInDiet);
-
-      if (data.isInDiet) {
-        setYesButton(true);
-        setNoButton(false);
-      } else {
-        setYesButton(false);
-        setNoButton(true);
-      }
-    }
-  }, []);
 
   function hangleBackNavigate() {
     navigation.goBack();
@@ -103,8 +82,6 @@ export function FormMeal() {
       ],
     };
 
-    console.log(mealData);
-
     try {
       if (
         mealDate.trim().length === 0 ||
@@ -133,6 +110,70 @@ export function FormMeal() {
       }
     }
   }
+
+  async function handleEditMeal() {
+    const mealData = {
+      day: mealDate,
+      data: [
+        {
+          hour: mealHour,
+          name: mealName,
+          description: mealDescription,
+          isInDiet,
+        },
+      ],
+    };
+
+    try {
+      if (
+        mealDate.trim().length === 0 ||
+        mealHour.trim().length === 0 ||
+        mealName.trim().length === 0 ||
+        mealDescription.trim().length === 0 ||
+        (yesButton === false && noButton === false)
+      ) {
+        return Alert.alert(
+          "Nova refeição",
+          "Informe todos os campos por favor"
+        );
+      }
+
+      await updateMeal(mealDate, mealHour, mealData);
+      navigation.navigate("home");
+    } catch (error) {
+      if (error instanceof AppError) {
+        Alert.alert("Atualizar refeição", error.message);
+      } else {
+        Alert.alert(
+          "Atualizar refeição",
+          "Não foi possível atualizar refeição"
+        );
+        console.error(error);
+      }
+    }
+  }
+
+  useEffect(() => {
+    if (route.params) {
+      setIsUpdate(true);
+
+      const { day, data } = route.params as MealDataProps;
+
+      setMealName(data.name);
+      setMealDescription(data.description);
+      setMealDate(day);
+      setMealHour(data.hour);
+      setIsInDiet(data.isInDiet);
+
+      if (data.isInDiet) {
+        setYesButton(true);
+        setNoButton(false);
+      } else {
+        setYesButton(false);
+        setNoButton(true);
+      }
+    }
+  }, []);
 
   const type = "NEUTRAL";
 
@@ -199,7 +240,7 @@ export function FormMeal() {
 
         <BoxButton>
           {isUpdate ? (
-            <Button name="Salvar alterações" onPress={() => {}} />
+            <Button name="Salvar alterações" onPress={handleEditMeal} />
           ) : (
             <Button name="Cadastrar refeição" onPress={hangleRegisterNewMeal} />
           )}
