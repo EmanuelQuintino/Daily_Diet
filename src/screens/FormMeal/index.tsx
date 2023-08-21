@@ -26,7 +26,7 @@ import { updateMeal } from "@storage/meals/updateMeal";
 export function FormMeal() {
   const [mealName, setMealName] = useState("");
   const [mealDescription, setMealDescription] = useState("");
-  const [mealDate, setMealDate] = useState("");
+  const [mealDay, setMealDay] = useState("");
   const [mealHour, setMealHour] = useState("");
   const [isInDiet, setIsInDiet] = useState(Boolean);
   const [yesButton, setYesButton] = useState(false);
@@ -39,13 +39,13 @@ export function FormMeal() {
     navigation.goBack();
   }
 
-  function handleMealDate(hour: string) {
+  function handleMealDay(hour: string) {
     const dateText = hour
       .replace(/\D/g, "")
       .replace(/(\d{2})(\d{2})(\d)/, "$1/$2/$3");
 
-    if (mealDate.length < 10) {
-      setMealDate(dateText);
+    if (mealDay.length < 10) {
+      setMealDay(dateText);
     }
   }
 
@@ -71,7 +71,7 @@ export function FormMeal() {
 
   async function hangleRegisterNewMeal() {
     const mealData = {
-      day: mealDate,
+      day: mealDay,
       data: [
         {
           hour: mealHour,
@@ -84,7 +84,7 @@ export function FormMeal() {
 
     try {
       if (
-        mealDate.trim().length === 0 ||
+        mealDay.trim().length === 0 ||
         mealHour.trim().length === 0 ||
         mealName.trim().length === 0 ||
         mealDescription.trim().length === 0 ||
@@ -113,7 +113,7 @@ export function FormMeal() {
 
   async function handleUpdateMeal() {
     const mealData = {
-      day: mealDate,
+      day: mealDay,
       data: [
         {
           hour: mealHour,
@@ -126,7 +126,7 @@ export function FormMeal() {
 
     try {
       if (
-        mealDate.trim().length === 0 ||
+        mealDay.trim().length === 0 ||
         mealHour.trim().length === 0 ||
         mealName.trim().length === 0 ||
         mealDescription.trim().length === 0 ||
@@ -138,8 +138,14 @@ export function FormMeal() {
         );
       }
 
-      await updateMeal(mealDate, mealHour, mealData);
-      navigation.navigate("home");
+      await updateMeal(mealDay, mealHour, mealData);
+
+      Alert.alert("Atualizar refeição", "Refeição atualizada com sucesso!", [
+        {
+          text: "OK",
+          onPress: () => navigation.navigate("home"),
+        },
+      ]);
     } catch (error) {
       if (error instanceof AppError) {
         Alert.alert("Atualizar refeição", error.message);
@@ -161,7 +167,7 @@ export function FormMeal() {
 
       setMealName(data.name);
       setMealDescription(data.description);
-      setMealDate(day);
+      setMealDay(day);
       setMealHour(data.hour);
       setIsInDiet(data.isInDiet);
 
@@ -208,8 +214,8 @@ export function FormMeal() {
             <Input
               label="Data"
               placeholder="21/07/2023"
-              value={mealDate}
-              onChangeText={handleMealDate}
+              value={mealDay}
+              onChangeText={handleMealDay}
             />
             <Input
               label="Hora"

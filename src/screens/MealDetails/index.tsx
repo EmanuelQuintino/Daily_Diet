@@ -73,11 +73,9 @@ export function MealDetails() {
     }
   }
 
-  // console.log(meal);
-
   useEffect(() => {
     fetchMeal();
-  }, []);
+  }, [day, hour]);
 
   const type = meal?.data.isInDiet ? "PRIMARY" : "SECONDARY";
 
