@@ -18,7 +18,7 @@ export function Statistics() {
   const [isDietCount, setIsDietCount] = useState(0);
   const [isNotDietCount, setIsNotDietCount] = useState(0);
   const [totalMeals, setTotalMeals] = useState(0);
-  const [totalMealsSequence, setTotalMealsSequence] = useState(0);
+  const [maxMealSequenceTrue, setMaxMealSequenceTrue] = useState(0);
   const [percentageIsDiet, setPercentageIsDiet] = useState("");
 
   function hangleBackNavigate() {
@@ -31,20 +31,20 @@ export function Statistics() {
     let trueCount = 0;
     let falseCount = 0;
     let sequenceTrue = 0;
-    let sequenceTrueAux = 0;
+    let maxSequenceTrue = 0;
 
     data.forEach((item) => {
       item.data.forEach((meal) => {
         if (meal.isInDiet === true) {
           trueCount++;
-          sequenceTrueAux++;
+          sequenceTrue++;
+
+          if (sequenceTrue > maxSequenceTrue) {
+            maxSequenceTrue = sequenceTrue;
+          }
         } else if (meal.isInDiet === false) {
           falseCount++;
-
-          if (sequenceTrue < sequenceTrueAux) {
-            sequenceTrue = sequenceTrueAux;
-          }
-          sequenceTrueAux = 0;
+          sequenceTrue = 0;
         }
       });
     });
@@ -52,7 +52,7 @@ export function Statistics() {
     setIsDietCount(trueCount);
     setIsNotDietCount(falseCount);
     setTotalMeals(trueCount + falseCount);
-    setTotalMealsSequence(sequenceTrue);
+    setMaxMealSequenceTrue(maxSequenceTrue);
     setPercentageIsDiet(
       ((trueCount / (trueCount + falseCount)) * 100).toFixed(2)
     );
@@ -76,7 +76,7 @@ export function Statistics() {
 
         <BoxNeutral>
           <StatisticCard
-            data={String(totalMealsSequence)}
+            data={String(maxMealSequenceTrue)}
             title="melhor sequência de pratos dentro da dieta"
             type="NEUTRAL"
           />
