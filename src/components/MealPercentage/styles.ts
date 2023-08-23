@@ -13,7 +13,7 @@ export const Container = styled.View<MealPercentageProps>`
   align-items: center;
   justify-content: center;
   background: ${({ theme, percentage, goal = 70 }) =>
-    percentage > goal ? theme.COLORS.GREEN_LIGHT : theme.COLORS.RED_LIGHT};
+    percentage >= goal ? theme.COLORS.GREEN_LIGHT : theme.COLORS.RED_LIGHT};
   height: 102px;
   width: 100%;
   border-radius: 8px;
@@ -32,14 +32,14 @@ export const ButtonContainer = styled(TouchableOpacity)<BackButtonProps>`
 export const ArrowIcon = styled(ArrowUpRight).attrs<MealPercentageProps>(
   ({ theme, percentage, goal = 70 }) => ({
     size: 24,
-    color: percentage > goal ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK,
+    color: percentage >= goal ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK,
   })
 )<MealPercentageProps>``;
 
 export const ArrowIconBackButton = styled(ArrowLeft).attrs<MealPercentageProps>(
   ({ theme, percentage, goal = 70 }) => ({
     size: 24,
-    color: percentage > goal ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK,
+    color: percentage >= goal ? theme.COLORS.GREEN_DARK : theme.COLORS.RED_DARK,
   })
 )<MealPercentageProps>``;
 

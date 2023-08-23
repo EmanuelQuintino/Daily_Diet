@@ -78,8 +78,6 @@ export function NewMeal() {
       ],
     };
 
-    console.log(mealData);
-
     try {
       if (
         mealDate.trim().length === 0 ||

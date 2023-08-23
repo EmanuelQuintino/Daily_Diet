@@ -63,47 +63,54 @@ export function Statistics() {
       fetchMeals();
     }, [])
   );
+
+  const type = Number(percentageIsDiet) >= 70 ? "PRIMARY" : "SECONDARY";
+
   return (
-    <Container>
-      <MealPercentage
-        percentage={Number(percentageIsDiet)}
-        backButton
-        onPress={hangleBackNavigate}
-      />
-
-      <BoxMain>
-        <Title>Estatísticas gerais</Title>
-
-        <BoxNeutral>
-          <StatisticCard
-            data={String(maxMealSequenceTrue)}
-            title="melhor sequência de pratos dentro da dieta"
-            type="NEUTRAL"
-          />
-        </BoxNeutral>
-
-        <BoxNeutral>
-          <StatisticCard
-            data={String(totalMeals)}
-            title="refeições registradas"
-            type="NEUTRAL"
-          />
-        </BoxNeutral>
-
-        <BoxPrimarySecondary>
-          <StatisticCard
-            data={String(isDietCount)}
-            title="refeições dentro da dieta"
-            type="PRIMARY"
+    <>
+      {percentageIsDiet && (
+        <Container type={type}>
+          <MealPercentage
+            percentage={Number(percentageIsDiet)}
+            backButton
+            onPress={hangleBackNavigate}
           />
 
-          <StatisticCard
-            data={String(isNotDietCount)}
-            title="refeições fora da dieta"
-            type="SECONDARY"
-          />
-        </BoxPrimarySecondary>
-      </BoxMain>
-    </Container>
+          <BoxMain>
+            <Title>Estatísticas gerais</Title>
+
+            <BoxNeutral>
+              <StatisticCard
+                data={String(maxMealSequenceTrue)}
+                title="melhor sequência de pratos dentro da dieta"
+                type="NEUTRAL"
+              />
+            </BoxNeutral>
+
+            <BoxNeutral>
+              <StatisticCard
+                data={String(totalMeals)}
+                title="refeições registradas"
+                type="NEUTRAL"
+              />
+            </BoxNeutral>
+
+            <BoxPrimarySecondary>
+              <StatisticCard
+                data={String(isDietCount)}
+                title="refeições dentro da dieta"
+                type="PRIMARY"
+              />
+
+              <StatisticCard
+                data={String(isNotDietCount)}
+                title="refeições fora da dieta"
+                type="SECONDARY"
+              />
+            </BoxPrimarySecondary>
+          </BoxMain>
+        </Container>
+      )}
+    </>
   );
 }

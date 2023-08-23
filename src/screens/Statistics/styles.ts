@@ -1,9 +1,21 @@
 import styled from "styled-components/native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { StyleProps } from "@screens/NewMeal/styles";
 
-export const Container = styled(SafeAreaView)`
+type Props = {
+  type: StyleProps;
+};
+
+export const Container = styled(SafeAreaView)<Props>`
   flex: 1;
-  background: ${({ theme }) => theme.COLORS.RED_LIGHT};
+  background: ${({ theme, type = "NEUTRAL" }) =>
+    type === "PRIMARY"
+      ? theme.COLORS.GREEN_LIGHT
+      : type === "SECONDARY"
+      ? theme.COLORS.RED_LIGHT
+      : type === "NEUTRAL"
+      ? theme.COLORS.GRAY_200
+      : ""};
 `;
 
 export const BoxMain = styled.View`
