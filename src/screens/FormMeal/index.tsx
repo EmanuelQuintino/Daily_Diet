@@ -42,19 +42,19 @@ export function FormMeal() {
   function handleMealDay(hour: string) {
     const dateText = hour
       .replace(/\D/g, "")
-      .replace(/(\d{2})(\d{2})(\d)/, "$1/$2/$3");
+      .slice(0, 8)
+      .replace(/(\d{2})(\d{2})(\d{4})/, "$1/$2/$3");
 
-    if (mealDay.length < 10) {
-      setMealDay(dateText);
-    }
+    setMealDay(dateText);
   }
 
   function handleMealHour(hour: string) {
-    const hourText = hour.replace(/\D/g, "").replace(/(\d{2})(\d)/, "$1:$2");
+    const hourText = hour
+      .replace(/\D/g, "")
+      .slice(0, 4)
+      .replace(/(\d{2})(\d)/, "$1:$2");
 
-    if (mealHour.length < 5) {
-      setMealHour(hourText);
-    }
+    setMealHour(hourText);
   }
 
   function handlePressYes() {
