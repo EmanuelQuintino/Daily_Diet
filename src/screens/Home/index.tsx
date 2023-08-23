@@ -39,6 +39,7 @@ export type MealsDataProps = {
 
 export function Home() {
   const [mealsData, setMealsData] = useState<MealsDataProps>([]);
+  const [percentageIsDiet, setPercentageIsDiet] = useState("");
 
   const navigation = useNavigation();
 
@@ -57,6 +58,23 @@ export function Home() {
   async function fetchMeals() {
     const data = await getMeals();
     setMealsData(data);
+
+    let trueCount = 0;
+    let falseCount = 0;
+
+    data.forEach((item) => {
+      item.data.forEach((meal) => {
+        if (meal.isInDiet === true) {
+          trueCount++;
+        } else if (meal.isInDiet === false) {
+          falseCount++;
+        }
+      });
+    });
+
+    setPercentageIsDiet(
+      ((trueCount / (trueCount + falseCount)) * 100).toFixed(2)
+    );
   }
 
   useFocusEffect(
@@ -71,7 +89,10 @@ export function Home() {
     <Container>
       <HeaderHome />
 
-      <MealPercentage percentage={90.86} onPress={handleNavigateStatistics} />
+      <MealPercentage
+        percentage={Number(percentageIsDiet)}
+        onPress={handleNavigateStatistics}
+      />
 
       <BoxButton>
         <LabelButton>Refeições</LabelButton>
