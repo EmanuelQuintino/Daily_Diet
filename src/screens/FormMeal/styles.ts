@@ -72,4 +72,6 @@ export const BoxYesNo = styled.View`
 
 export const BoxButton = styled.View`
   width: 100%;
+  margin-top: 42px;
+  marg
 `;

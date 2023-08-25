@@ -1,6 +1,11 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { useEffect, useState } from "react";
-import { Alert } from "react-native";
+import {
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+} from "react-native";
 
 import {
   BoxButton,
@@ -184,74 +189,87 @@ export function FormMeal() {
   const type = "NEUTRAL";
 
   return (
-    <Container type={type}>
-      <HeaderScreen
-        type={type}
-        title={isUpdate ? "Editar refeição" : "Nova refeição"}
-        onPress={hangleBackNavigate}
-      />
-      <BoxMain>
-        <BoxForm>
-          <BoxInput>
-            <Input
-              label="Nome"
-              placeholder="Digite o nome da refeição"
-              value={mealName}
-              onChangeText={setMealName}
-            />
-          </BoxInput>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={{ flex: 1 }}
+    >
+      <ScrollView
+        contentContainerStyle={{ flexGrow: 1 }}
+        keyboardShouldPersistTaps="handled"
+      >
+        <Container type={type}>
+          <HeaderScreen
+            type={type}
+            title={isUpdate ? "Editar refeição" : "Nova refeição"}
+            onPress={hangleBackNavigate}
+          />
+          <BoxMain>
+            <BoxForm>
+              <BoxInput>
+                <Input
+                  label="Nome"
+                  placeholder="Digite o nome da refeição"
+                  value={mealName}
+                  onChangeText={setMealName}
+                />
+              </BoxInput>
 
-          <BoxTextArea>
-            <Input
-              label="Descrição"
-              placeholder="Faça uma breve descrição da refeição"
-              value={mealDescription}
-              onChangeText={setMealDescription}
-            />
-          </BoxTextArea>
+              <BoxTextArea>
+                <Input
+                  label="Descrição"
+                  placeholder="Faça uma breve descrição da refeição"
+                  value={mealDescription}
+                  onChangeText={setMealDescription}
+                />
+              </BoxTextArea>
 
-          <BoxInput>
-            <Input
-              label="Data"
-              placeholder="21/07/2023"
-              value={mealDay}
-              onChangeText={handleMealDay}
-            />
-            <Input
-              label="Hora"
-              placeholder="23:23"
-              value={mealHour}
-              onChangeText={handleMealHour}
-            />
-          </BoxInput>
+              <BoxInput>
+                <Input
+                  label="Data"
+                  placeholder="21/07/2023"
+                  value={mealDay}
+                  onChangeText={handleMealDay}
+                />
+                <Input
+                  label="Hora"
+                  placeholder="23:23"
+                  value={mealHour}
+                  onChangeText={handleMealHour}
+                />
+              </BoxInput>
 
-          <BoxIsInDiet>
-            <Label>Está dentro da dieta?</Label>
-            <BoxYesNo>
-              <ButtonIsInDiet
-                name="Sim"
-                type="PRIMARY"
-                onPress={handlePressYes}
-                checked={yesButton}
-              />
-              <ButtonIsInDiet
-                name="Não"
-                type="SECONDARY"
-                onPress={handlePressNo}
-                checked={noButton}
-              />
-            </BoxYesNo>
-          </BoxIsInDiet>
-        </BoxForm>
+              <BoxIsInDiet>
+                <Label>Está dentro da dieta?</Label>
+                <BoxYesNo>
+                  <ButtonIsInDiet
+                    name="Sim"
+                    type="PRIMARY"
+                    onPress={handlePressYes}
+                    checked={yesButton}
+                  />
+                  <ButtonIsInDiet
+                    name="Não"
+                    type="SECONDARY"
+                    onPress={handlePressNo}
+                    checked={noButton}
+                  />
+                </BoxYesNo>
+              </BoxIsInDiet>
+            </BoxForm>
 
-        <BoxButton>
-          {isUpdate ? (
-            <Button name="Salvar alterações" onPress={handleUpdateMeal} />
-          ) : (
-            <Button name="Cadastrar refeição" onPress={hangleRegisterNewMeal} />
-          )}
-        </BoxButton>
-      </BoxMain>
-    </Container>
+            <BoxButton>
+              {isUpdate ? (
+                <Button name="Salvar alterações" onPress={handleUpdateMeal} />
+              ) : (
+                <Button
+                  name="Cadastrar refeição"
+                  onPress={hangleRegisterNewMeal}
+                />
+              )}
+            </BoxButton>
+          </BoxMain>
+        </Container>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
