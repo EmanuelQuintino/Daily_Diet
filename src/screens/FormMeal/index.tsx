@@ -32,6 +32,8 @@ export function FormMeal() {
   const [mealName, setMealName] = useState("");
   const [mealDescription, setMealDescription] = useState("");
   const [mealDay, setMealDay] = useState("");
+  const [mealDayToUpdate, setMealDayToUpdate] = useState("");
+  const [mealHourToUpdate, setMealHourToUpdate] = useState("");
   const [mealHour, setMealHour] = useState("");
   const [isInDiet, setIsInDiet] = useState(Boolean);
   const [yesButton, setYesButton] = useState(false);
@@ -143,7 +145,7 @@ export function FormMeal() {
         );
       }
 
-      await updateMeal(mealDay, mealHour, mealData);
+      await updateMeal(mealDayToUpdate, mealHourToUpdate, mealData);
 
       Alert.alert("Atualizar refeição", "Refeição atualizada com sucesso!", [
         {
@@ -164,7 +166,7 @@ export function FormMeal() {
     }
   }
 
-  useEffect(() => {
+  function verifyRouteParamsToUpdate() {
     if (route.params) {
       setIsUpdate(true);
 
@@ -174,6 +176,8 @@ export function FormMeal() {
       setMealDescription(data.description);
       setMealDay(day);
       setMealHour(data.hour);
+      setMealDayToUpdate(day);
+      setMealHourToUpdate(data.hour);
       setIsInDiet(data.isInDiet);
 
       if (data.isInDiet) {
@@ -184,6 +188,10 @@ export function FormMeal() {
         setNoButton(true);
       }
     }
+  }
+
+  useEffect(() => {
+    verifyRouteParamsToUpdate();
   }, []);
 
   const type = "NEUTRAL";
