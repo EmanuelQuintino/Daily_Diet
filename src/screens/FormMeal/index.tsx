@@ -46,22 +46,36 @@ export function FormMeal() {
     navigation.goBack();
   }
 
-  function handleMealDay(hour: string) {
-    const dateText = hour
-      .replace(/\D/g, "")
-      .slice(0, 8)
-      .replace(/(\d{2})(\d{2})(\d{4})/, "$1/$2/$3");
+  function handleMealDay(day: string) {
+    let formatDay = day.replace(/\D/g, "");
 
-    setMealDay(dateText);
+    if (formatDay.length >= 3 && formatDay.length <= 4) {
+      formatDay = `${formatDay.slice(0, 2)}/${formatDay.slice(2)}`;
+    } else if (formatDay.length >= 5 && formatDay.length <= 7) {
+      formatDay = `${formatDay.slice(0, 2)}/${formatDay.slice(
+        2,
+        4
+      )}/${formatDay.slice(4)}`;
+    } else if (formatDay.length > 7) {
+      formatDay = `${formatDay.slice(0, 2)}/${formatDay.slice(
+        2,
+        4
+      )}/${formatDay.slice(4, 8)}`;
+    }
+
+    setMealDay(formatDay);
   }
 
   function handleMealHour(hour: string) {
-    const hourText = hour
-      .replace(/\D/g, "")
-      .slice(0, 4)
-      .replace(/(\d{2})(\d)/, "$1:$2");
+    let formatHour = hour.replace(/\D/g, "");
 
-    setMealHour(hourText);
+    if (formatHour.length >= 3 && formatHour.length <= 4) {
+      formatHour = `${formatHour.slice(0, 2)}:${formatHour.slice(2)}`;
+    } else if (formatHour.length > 4) {
+      formatHour = `${formatHour.slice(0, 2)}:${formatHour.slice(2, 4)}`;
+    }
+
+    setMealHour(formatHour);
   }
 
   function handlePressYes() {

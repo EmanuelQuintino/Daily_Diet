@@ -83,8 +83,6 @@ export function Home() {
     }, [])
   );
 
-  console.log(JSON.stringify(mealsData));
-
   return (
     <Container>
       <HeaderHome />
