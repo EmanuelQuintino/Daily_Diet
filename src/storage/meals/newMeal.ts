@@ -2,6 +2,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { MEALS_DATA_KEY } from "@storage/storageConfig";
 import { getMeals } from "./getMeals";
 import { AppError } from "@utils/AppError";
+import { Horse } from "phosphor-react-native";
 
 export type MealDataProps = {
   day: string;
@@ -26,10 +27,20 @@ export async function newMeal(meal: MealDataProps) {
       );
     }
 
+    function validateHour(hour: string) {
+      const [hours, minutes] = hour.split(":").map(Number);
+      return hours >= 0 && hours <= 23 && minutes >= 0 && minutes <= 59;
+    }
+
     const isValidDate = validateDate(meal.day);
+    const isValidHour = validateHour(meal.data[0].hour);
 
     if (!isValidDate) {
       throw new AppError("Data inválida!");
+    }
+
+    if (!isValidHour) {
+      throw new AppError("Hora inválida!");
     }
 
     const storageMeals = await getMeals();
