@@ -1,6 +1,6 @@
 # Daily_Diet
 
-<!-- ![layout](./assets/layout.png) -->
+![layout](./assets/layout-daily-diet.png)
 
 ## Technologies
 
@@ -13,4 +13,4 @@
 
 ## Links
 
-- [Figma](https://www.figma.com/file/1hQD9CyywKjsmaoNnBHriA/Daily-Diet-%E2%80%A2-Desafio-React-Native-(Community)?type=design&node-id=0-1&mode=design&t=A3wEkaiUiC3ewCRm-0)
+- [Figma](<https://www.figma.com/file/1hQD9CyywKjsmaoNnBHriA/Daily-Diet-%E2%80%A2-Desafio-React-Native-(Community)?type=design&node-id=0-1&mode=design&t=A3wEkaiUiC3ewCRm-0>)
