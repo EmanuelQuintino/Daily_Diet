@@ -2,6 +2,8 @@
 
 ![layout](./assets/layout-daily-diet.png)
 
+Application for recording meals with features such as adding, editing and removing, as well as displaying diet progress statistics. This tool promises to simplify the control of your diet in a practical and efficient way.
+
 ## Technologies
 
 - `React Native`
@@ -13,4 +15,4 @@
 
 ## Links
 
-- [Figma](<https://www.figma.com/file/1hQD9CyywKjsmaoNnBHriA/Daily-Diet-%E2%80%A2-Desafio-React-Native-(Community)?type=design&node-id=0-1&mode=design&t=A3wEkaiUiC3ewCRm-0>)
+- [Figma](https://www.figma.com/community/file/1218573349379609244)
